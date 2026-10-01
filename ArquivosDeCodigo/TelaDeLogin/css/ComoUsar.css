@@ -1,0 +1,91 @@
+body {
+    background-color: #f7fbf8;
+    color: #0f675b;
+    font-family: Arial, sans-serif;
+    margin: 0px;
+}
+
+nav {
+    background-color: #0f675b;
+}
+
+nav h2 {
+    color: white;
+    margin-left: 39px;
+}
+
+.navegacao a {
+    color:white;
+    text-decoration: none;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+#como-usar > p {
+    margin-left: 10px;
+}
+
+#etapas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 10px;
+}
+
+.etapa {
+    background-color: white;
+    border: 1px solid #dbe7e2;
+    width: 400px;
+    padding: 20px;
+}
+
+.etapa h2 {
+    color: #0f675b;
+    margin-top: 0px;
+}
+
+.etapa p {
+    color: #0f675b;
+    line-height: 1.5;
+}
+
+#acesso {
+    magin: 30px 10px;
+}
+
+#acesso p {
+    margin-left: 0px;
+}
+
+#acesso a {
+    color: white;
+    background-color: #0f675b;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: inline-block;
+}
+
+footer {
+    background-color: #0f675b;
+    color: white;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0px;
+}
+
+@media (max-width: 768px) {
+    .etapa {
+        width: auto;
+    }
+    #etapas {
+        display: block;
+    }
+    .etapa {
+        margin-bottom: 20px;
+    }
+}
