@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta - MedMap</title>
+    <link rel="stylesheet" href="css/CriarConta.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>MedMap</h2>
+
+        <ul class="navegacao">
+            <li><a href="PaginaInicial.html">Página Inicial</a></li>
+            <li><a href="ComoUsar.html">Como Usar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="criar-conta">
+
+            <h1>Crie sua conta</h1>
+
+            <p>Preencha seus dados para começar a usar o MedMap.</p>
+
+            <div id="caixa">
+
+                <form>
+
+                    <label for="nome">Nome</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Seu nome"
+                        required
+                    >
+
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="voce@email.com"
+                        required
+                    >
+
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Mínimo de 6 caracteres"
+                        minlength="6"
+                        required
+                    >
+
+                    <label for="confirmar-senha">Confirmar senha</label>
+                    <input
+                        type="password"
+                        id="confirmar-senha"
+                        placeholder="Digite a senha novamente"
+                        minlength="6"
+                        required
+                    >
+
+                    <button type="submit">Criar conta</button>
+
+                </form>
+
+                <p>
+                    Já possui uma conta?
+                    <a href="Tela.html">Entrar</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>MedMap - seu mapa de saúde preventiva</p>
+    </footer>
+    
+</body>
+</html>
