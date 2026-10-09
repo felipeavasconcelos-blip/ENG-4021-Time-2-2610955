@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição de usuário - MedMap</title>
+    <link rel="stylesheet" href="css/EdicaoUsuario.css">
+</head>
+<body>
+    <nav>
+       <h2>MedMap</h2>
+    </nav>
+    <main>
+       <section id="Editar Usuario">
+           <h1>Edite o seu Perfil</h1>
+           <p>Atualize suas informações e a sua foto de perfil.</p>
+           <div id="caixa">
+                <form>
+                    <div id="foto-perfil">
+                        <img id="previa" src="" alt="Foto de perfil" hidden>
+                        <span id="iniciais">+</span>
+                    </div>
+                    <label for="foto" id="botao-foto">Alterar foto de perfil</label>
+                    <input type="file" id="foto" accept="image/*">
+
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Seu nome" required>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="voce@email.com" required>
+
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+
+                    <label for="senha">Nova senha</label>
+                    <input type="password" id="senha" placeholder="Deixe em branco para manter a atual" minlength="6">
+
+                    <button type="submit">Salvar alterações</button>
+                    <p><a href="Tela.html">Voltar a tela inicial</a></p>
+                    <p><a href="RemocaoUsuario.html">Quero excluir minha conta</a></p>
+                </form>
+            </div>
+       </section>
+    </main>
+
+    <script>
+        var campoFoto = document.getElementById("foto");
+        var previa = document.getElementById("previa");
+        var iniciais = document.getElementById("iniciais");
+
+        campoFoto.addEventListener("change", function () {
+            var arquivo = campoFoto.files[0];
+            if (!arquivo) {
+                return;
+            }
+            previa.src = URL.createObjectURL(arquivo);
+            previa.hidden = false;
+            iniciais.hidden = true;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remoção de usuário - MedMap</title>
+    <link rel="stylesheet" href="css/RemocaoUsuario.css">
+</head>
+<body>
+    <nav>
+       <h2>MedMap</h2>
+    </nav>
+    <main>
+       <section id="Remover Usuario">
+           <h1>Exclua a sua Conta</h1>
+           <p>Esta ação é permanente e não poderá ser desfeita.</p>
+           <div id="caixa">
+                <form>
+                    <div id="aviso">
+                        Ao excluir a sua conta, todos os seus dados e informações salvas no MedMap serão removidos definitivamente.
+                    </div>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="voce@email.com" required>
+
+                    <label for="senha">Confirme a sua senha</label>
+                    <input type="password" id="senha" placeholder="Digite sua senha" minlength="6" required>
+
+                    <label id="confirmacao" for="confirmar">
+                        <input type="checkbox" id="confirmar" required>
+                        Entendo que esta ação não pode ser desfeita
+                    </label>
+
+                    <button type="submit">Excluir conta</button>
+                    <p><a href="Tela.html">Cancelar e voltar a tela inicial</a></p>
+                </form>
+            </div>
+       </section>
+    </main>
+
+</body>
+</html>
