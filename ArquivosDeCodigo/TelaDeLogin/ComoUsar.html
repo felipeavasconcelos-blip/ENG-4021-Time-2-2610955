@@ -1,76 +1,243 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Como usar - MedMap</title>
+
     <link rel="stylesheet" href="css/ComoUsar.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <nav>
-        <h2>MedMap</h2>
 
-        <ul class="navegacao">
-            <li><a href="PaginaInicial.html">Página Inicial</a></li>
-            <li><a href="ComoUsar.html">Como Usar</a></li>
-        </ul>
+        <div class="logo">
+            MedMap
+        </div>
+
+        <div class="navegacao">
+
+            <a href="PaginaInicial.html">
+                Página Inicial
+            </a>
+
+            <a href="ComoUsar.html" class="ativo">
+                Como Usar
+            </a>
+
+        </div>
+
     </nav>
 
     <main>
-        <section id="como-usar">
 
-            <h1>Como usar o MedMap?</h1>
+        <section class="introducao">
+
+            <span class="tag">COMO FUNCIONA</span>
+
+            <h1>
+                Como usar o MedMap?
+            </h1>
 
             <p>
-                O MedMap ajuda você a organizar suas informações de saúde e acompanhar
-                seus cuidados preventivos de forma simples.
+                Organize suas informações de saúde, acompanhe seus cuidados
+                preventivos e tenha tudo em um só lugar.
             </p>
 
-            <div id="etapas">
-
-                <div class="etapa">
-                    <h2>1. Crie sua conta</h2>
-                    <p>
-                        Cadastre-se utilizando seu e-mail e crie uma senha para acessar sua conta.
-                    </p>
-                </div>
-
-                <div class="etapa">
-                    <h2>2. Preencha suas informações</h2>
-                    <p>
-                        Adicione informações importantes sobre sua saúde, hábitos e histórico familiar.
-                    </p>
-                </div>
-
-                <div class="etapa">
-                    <h2>3. Organize seus cuidados</h2>
-                    <p>
-                        Consulte suas informações e acompanhe consultas, exames e outros cuidados preventivos.
-                    </p>
-                </div>
-
-                <div class="etapa">
-                    <h2>4. Acompanhe sua saúde</h2>
-                    <p>
-                        Use o MedMap para manter suas informações organizadas e facilitar o acompanhamento da sua saúde.
-                    </p>
-                </div>
-
-            </div>    
-
-            <div id="acesso">
-                <p>Já possui uma conta?</p>
-                <a href="Tela.html">Entrar na minha conta</a>
-            </div>
-                
         </section>
+
+        <section class="etapas">
+
+
+            <!-- ETAPA 1 -->
+
+            <div class="etapa selecionada" onclick="selecionarEtapa(this)">
+
+                <div class="numero">
+                    01
+                </div>
+
+                <div class="conteudo-etapa">
+
+                    <div class="icone">
+                        +
+                    </div>
+
+                    <h2>
+                        Crie sua conta
+                    </h2>
+
+                    <p>
+                        Cadastre-se utilizando seu e-mail e crie uma senha
+                        para acessar sua conta de forma segura.
+                    </p>
+
+                    <span class="detalhe">
+                        Cadastro rápido e simples
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="etapa" onclick="selecionarEtapa(this)">
+
+                <div class="numero">
+                    02
+                </div>
+
+                <div class="conteudo-etapa">
+
+                    <div class="icone">
+                        ✓
+                    </div>
+
+                    <h2>
+                        Preencha suas informações
+                    </h2>
+
+                    <p>
+                        Adicione informações importantes sobre sua saúde,
+                        hábitos, histórico familiar e outros dados relevantes.
+                    </p>
+
+                    <span class="detalhe">
+                        Suas informações ficam organizadas
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="etapa" onclick="selecionarEtapa(this)">
+
+                <div class="numero">
+                    03
+                </div>
+
+                <div class="conteudo-etapa">
+
+                    <div class="icone">
+                        +
+                    </div>
+
+                    <h2>
+                        Organize seus cuidados
+                    </h2>
+
+                    <p>
+                        Consulte suas informações e acompanhe consultas,
+                        exames, vacinas e outros cuidados preventivos.
+                    </p>
+
+                    <span class="detalhe">
+                        Tenha seus cuidados sempre por perto
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="etapa" onclick="selecionarEtapa(this)">
+
+                <div class="numero">
+                    04
+                </div>
+
+                <div class="conteudo-etapa">
+
+                    <div class="icone">
+                        ♥
+                    </div>
+
+                    <h2>
+                        Acompanhe sua saúde
+                    </h2>
+
+                    <p>
+                        Use o MedMap para manter suas informações organizadas
+                        e facilitar o acompanhamento da sua saúde ao longo do tempo.
+                    </p>
+
+                    <span class="detalhe">
+                        Mais organização para o seu cuidado
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="acesso">
+
+            <div>
+
+                <span class="tag">
+                    JÁ POSSUI UMA CONTA?
+                </span>
+
+                <h2>
+                    Continue cuidando da sua saúde.
+                </h2>
+
+                <p>
+                    Acesse sua conta e tenha suas informações organizadas
+                    em um só lugar.
+                </p>
+
+            </div>
+
+            <a href="tela.html">
+                Entrar na minha conta
+                <span>→</span>
+            </a>
+
+        </section>
+
     </main>
 
+
+    <!-- FOOTER -->
+
     <footer>
-        <p>MedMap - seu mapa de saúde</p>
+
+        <div class="logo-footer">
+            MedMap
+        </div>
+
+        <p>
+            Seu cuidado, do seu jeito.
+        </p>
+
+        <span>
+            © 2026 MedMap
+        </span>
+
     </footer>
 
+    <script>
+
+        function selecionarEtapa(etapa) {
+
+            const etapas = document.querySelectorAll(".etapa");
+
+            etapas.forEach(function(item) {
+                item.classList.remove("selecionada");
+            });
+
+            etapa.classList.add("selecionada");
+        }
+
+    </script>
+
 </body>
+
 </html>
