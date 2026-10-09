@@ -1,459 +1,74 @@
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 30px;
-}
-
 body {
-    margin: 0;
     background-color: #f7fbf8;
-    color: #173d37;
-    font-family: "Poppins", Arial, sans-serif;
+    color: #0f675b;
+    font-family: Arial, sans-serif;
+    margin: 0px;
 }
-
-/* NAV */
 
 nav {
-    height: 75px;
     background-color: #0f675b;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 6%;
-
-    box-shadow: 0 4px 15px rgba(15, 103, 91, 0.20);
 }
 
-.logo {
-    margin: 0;
+nav h2 {
     color: white;
-
-    font-size: 20px;
-    font-weight: bold;
+    margin-left: 39px;
 }
 
 .navegacao {
-    display: flex;
-    gap: 10px;
+    list-style-type: none;
 }
 
 .navegacao a {
-    display: block;
-
     color: white;
     text-decoration: none;
-
-    padding: 11px 18px;
-
-    border-radius: 8px;
-
-    font-size: 17px;
-    font-weight: bold;
-
-    transition: 0.25s;
 }
 
-.navegacao a:hover,
-.navegacao a.ativo {
-    background-color: rgba(255, 255, 255, 0.15);
+h1 {
+    margin-left: 10px;
 }
 
-.navegacao a:hover {
-    transform: scale(1.05);
+section p {
+    margin-left: 10px;
 }
-
-/* CONTEÚDO */
-
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-
-    padding: 60px 40px 70px;
-}
-
-.tag {
-    color: #0f675b;
-
-    font-size: 12px;
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.introducao h1 {
-    margin: 12px 0;
-
-    color: #0f675b;
-
-    font-size: 38px;
-    line-height: 1.25;
-}
-
-.introducao p {
-    max-width: 800px;
-
-    margin: 0 0 40px;
-
-    color: #607873;
-
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-/* CARDS DOS ARTIGOS */
-
-.lista-artigos {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 22px;
-
-    margin-bottom: 55px;
-}
-
-.card-artigo {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    min-height: 230px;
-
-    background-color: white;
-
-    border: 1px solid #d9e8e3;
-    border-radius: 18px;
-
-    padding: 28px 24px;
-
-    text-decoration: none;
-    color: inherit;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 4px 8px rgba(15, 103, 91, 0.05),
-        0 12px 25px rgba(15, 103, 91, 0.08);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.card-artigo:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 8px 12px rgba(15, 103, 91, 0.08),
-        0 20px 35px rgba(15, 103, 91, 0.15);
-
-    border-color: #a9d1c7;
-}
-
-.card-artigo .numero {
-    position: absolute;
-
-    top: 15px;
-    right: 20px;
-
-    font-size: 50px;
-    font-weight: bold;
-
-    color: #e5f1ed;
-}
-
-.card-artigo .icone {
-    position: relative;
-
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: #0f675b;
-    color: white;
-
-    border-radius: 50%;
-
-    font-size: 20px;
-}
-
-.card-artigo h2 {
-    position: relative;
-
-    margin: 22px 0 18px;
-
-    color: #0f675b;
-
-    font-size: 18px;
-    line-height: 1.35;
-}
-
-.card-artigo h2::after {
-    content: "";
-
-    display: block;
-
-    width: 35px;
-    height: 3px;
-
-    margin-top: 14px;
-
-    background-color: #0f675b;
-
-    border-radius: 5px;
-}
-
-.card-artigo .ler {
-    margin-top: auto;
-
-    color: #0f675b;
-
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* ARTIGOS */
 
 .artigo {
     background-color: white;
-
-    border: 1px solid #d9e8e3;
-    border-radius: 18px;
-
-    padding: 35px 40px;
-
-    margin-bottom: 28px;
-
-    box-shadow: 0 6px 18px rgba(15, 103, 91, 0.06);
+    border: 1px solid #dbe7e2;
+    width: 600px;
+    margin: 20px 10px;
+    padding: 20px;
 }
 
-.artigo h2 {
-    margin: 10px 0 20px;
-
-    color: #0f675b;
-
-    font-size: 26px;
-    line-height: 1.3;
+.artigo h3 {
+    margin-top: 0px;
 }
 
 .artigo p {
-    color: #4f6f69;
-
-    font-size: 15px;
-    line-height: 1.8;
+    color: #333333;
+    margin-left: 0px;
 }
 
-.resposta {
-    background-color: #e8f3ef;
-
-    border-left: 4px solid #0f675b;
-    border-radius: 10px;
-
-    padding: 18px 22px;
-
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-.resposta strong,
-.ajuda strong {
-    color: #0f675b;
-}
-
-.ajuda {
-    border: 1px dashed #a9d1c7;
-    border-radius: 10px;
-
-    padding: 16px 22px;
-
-    font-size: 15px;
-    line-height: 1.7;
-}
-
-.fonte {
-    margin-bottom: 0;
-
-    font-size: 13px !important;
-}
-
-.fonte a {
-    color: #0f675b;
+.artigo .fonte {
+    font-size: 13px;
+    color: #50807e;
 }
 
 .aviso {
-    margin: 10px 0 0;
-
-    color: #607873;
-
     font-size: 13px;
-    font-style: italic;
-    text-align: center;
+    color: #50807e;
 }
 
-/* CHAMADA FINAL */
-
-.acesso {
-    margin-top: 40px;
-
-    padding: 28px 35px;
-
-    background-color: #e8f3ef;
-
-    border: 1px solid #d2e6df;
-    border-radius: 16px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-
-    box-shadow: 0 6px 18px rgba(15, 103, 91, 0.06);
-}
-
-.acesso h2 {
-    margin: 8px 0;
-
+section a {
     color: #0f675b;
-
-    font-size: 24px;
 }
-
-.acesso p {
-    margin: 0;
-
-    color: #4f6f69;
-
-    font-size: 15px;
-}
-
-.acesso a {
-    flex-shrink: 0;
-
-    background-color: #0f675b;
-    color: white;
-
-    text-decoration: none;
-
-    padding: 13px 23px;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: bold;
-
-    box-shadow: 0 5px 12px rgba(15, 103, 91, 0.20);
-
-    transition: 0.25s;
-}
-
-.acesso a:hover {
-    background-color: #0b5148;
-
-    transform: scale(1.05);
-}
-
-/* FOOTER */
 
 footer {
-    position: relative;
-
-    min-height: 95px;
-
-    background-color: #0f675b;
-    color: white;
-
-    padding: 25px 6%;
-
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-    box-shadow: 0 -3px 12px rgba(15, 103, 91, 0.10);
+    text-align: center;
+    color: #50807e;
 }
 
-.logo-footer {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-footer p {
-    margin: 0;
-
-    font-size: 15px;
-}
-
-footer span {
-    margin-left: auto;
-
-    font-size: 13px;
-    opacity: 0.8;
-}
-
-/* TELAS MENORES */
-
-@media (max-width: 1000px) {
-
-    .lista-artigos {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 650px) {
-
-    nav {
-        height: auto;
-
-        padding: 18px 25px;
-
-        flex-direction: column;
-
-        gap: 15px;
-    }
-
-    .navegacao a {
-        padding: 9px 12px;
-        font-size: 15px;
-    }
-
-    main {
-        padding: 40px 20px;
-    }
-
-    .introducao h1 {
-        font-size: 28px;
-    }
-
-    .lista-artigos {
-        grid-template-columns: 1fr;
-    }
-
+@media (max-width: 768px) {
     .artigo {
-        padding: 25px 22px;
-    }
-
-    .acesso {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .acesso a {
-        width: 100%;
-        text-align: center;
-    }
-
-    footer {
-        flex-wrap: wrap;
-    }
-
-    footer span {
-        margin-left: 0;
+        width: auto;
     }
 }
