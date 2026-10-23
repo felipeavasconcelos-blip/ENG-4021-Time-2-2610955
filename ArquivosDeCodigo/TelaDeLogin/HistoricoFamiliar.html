@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico familiar - MedMap</title>
+    <link rel="stylesheet" href="css/HistoricoFamiliar.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>MedMap</h2>
+
+        <ul class="navegacao">
+            <li><a href="/">Página inicial</a></li>
+            <li><a href="/como-usar/">Como usar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="historico">
+
+            <h1>Histórico familiar</h1>
+
+            <p>
+                Registre informações sobre doenças na sua família
+                para ajudar a acompanhar sua saúde preventiva.
+            </p>
+
+            <div id="caixa-formulario">
+
+                <h2>Adicionar informação</h2>
+
+                <form>
+
+                    <label for="parente">Parentesco</label>
+                    <select id="parente" name="parente" required>
+                        <option value="">Selecione um parente</option>
+                        <option value="Pai">Pai</option>
+                        <option value="Mãe">Mãe</option>
+                        <option value="Avó materna">Avó materna</option>
+                        <option value="Avô materno">Avô materno</option>
+                        <option value="Avó paterna">Avó paterna</option>
+                        <option value="Avô paterno">Avô paterno</option>
+                        <option value="Irmão ou irmã">Irmão ou irmã</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+
+                    <label for="doenca">Doença</label>
+                    <input
+                        type="text"
+                        id="doenca"
+                        name="doenca"
+                        placeholder="Ex.: Diabetes"
+                        required
+                    >
+
+                    <label for="idade">Idade no diagnóstico</label>
+                    <input
+                        type="number"
+                        id="idade"
+                        name="idade"
+                        min="0"
+                        max="120"
+                        placeholder="Ex.: 50"
+                        required
+                    >
+
+                    <button type="submit">Adicionar</button>
+
+                </form>
+
+            </div>
+
+            <h2 class="titulo-registros">Informações registradas</h2>
+
+            <div id="lista-historico">
+
+                <div class="registro">
+                    <div>
+                        <h3>Avó materna</h3>
+                        <p><strong>Doença:</strong> Diabetes</p>
+                        <p><strong>Idade no diagnóstico:</strong> 60 anos</p>
+                    </div>
+
+                    <button type="button" class="remover">Remover</button>
+                </div>
+
+                <div class="registro">
+                    <div>
+                        <h3>Pai</h3>
+                        <p><strong>Doença:</strong> Hipertensão</p>
+                        <p><strong>Idade no diagnóstico:</strong> 45 anos</p>
+                    </div>
+
+                    <button type="button" class="remover">Remover</button>
+                </div>
+
+                <div class="registro">
+                    <div>
+                        <h3>Avô paterno</h3>
+                        <p><strong>Doença:</strong> Colesterol alto</p>
+                        <p><strong>Idade no diagnóstico:</strong> 55 anos</p>
+                    </div>
+
+                    <button type="button" class="remover">Remover</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>MedMap - seu mapa de saúde preventiva</p>
+    </footer>
+
+</body>
+</html>
