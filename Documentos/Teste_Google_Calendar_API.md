@@ -1,4 +1,4 @@
-# Teste da Google Calendar API
+Teste da Google Calendar API
 
 Documento da atividade: [Acessar o Google Docs](https://docs.google.com/document/d/15bZmdkHwE7ULkfuMbhxehbm4UlQkowtu0CW_IzXYjPY/edit?usp=sharing)
 
