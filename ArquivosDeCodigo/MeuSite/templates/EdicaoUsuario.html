@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edição de usuário - MedMap</title>
-    <link rel="stylesheet" href="css/EdicaoUsuario.css">
+    <link rel="stylesheet" href="{% static 'css/EdicaoUsuario.css' %}">
 </head>
 <body>
     <nav>
@@ -36,8 +37,8 @@
                     <input type="password" id="senha" placeholder="Deixe em branco para manter a atual" minlength="6">
 
                     <button type="submit">Salvar alterações</button>
-                    <p><a href="Tela.html">Voltar a tela inicial</a></p>
-                    <p><a href="RemocaoUsuario.html">Quero excluir minha conta</a></p>
+                    <p><a href="{% url 'Tela' %}">Voltar a tela inicial</a></p>
+                    <p><a href="{% url 'RemocaoUsuario' %}">Quero excluir minha conta</a></p>
                 </form>
             </div>
        </section>

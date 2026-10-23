@@ -1,18 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artigos - MedMap</title>
-    <link rel="stylesheet" href="css/Artigos.css">
+    <link rel="stylesheet" href="{% static 'css/Artigos.css' %}">
 </head>
 <body>
     <nav>
         <h2>MedMap</h2>
         <ul class="navegacao">
-            <li><a href="PaginaInicial.html">Página inicial</a></li>
-            <li><a href="ComoUsar.html">Como usar</a></li>
-            <li><a href="Artigos.html">Artigos</a></li>
+            <li><a href="{% url 'home' %}">Página inicial</a></li>
+            <li><a href="{% url 'ComoUsar' %}">Como usar</a></li>
+            <li><a href="{% url 'Artigos' %}">Artigos</a></li>
         </ul>
     </nav>
 
@@ -47,7 +48,7 @@
 
             <p class="aviso">Este conteúdo é informativo e não substitui a consulta com um profissional de saúde.</p>
 
-            <p>Quer receber seu calendário de cuidados? <a href="CriarConta.html">Criar conta</a></p>
+            <p>Quer receber seu calendário de cuidados? <a href="{% url 'CriarConta' %}">Criar conta</a></p>
         </section>
     </main>
 
