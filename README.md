@@ -9,7 +9,7 @@ O MedMap é uma aplicação web de saúde preventiva. Muitas pessoas não sabem 
 
 ## Status do projeto
 
-Em desenvolvimento. As telas já foram feitas em HTML e CSS. A próxima etapa é ligar as telas ao banco de dados com Django.
+Em desenvolvimento. As telas já foram feitas em HTML e CSS e já estão no projeto Django, com uma rota para cada tela. A próxima etapa é ligar as telas ao banco de dados.
 
 ## Sumário
 
@@ -56,13 +56,13 @@ Em desenvolvimento. As telas já foram feitas em HTML e CSS. A próxima etapa é
 
 ### Frameworks e bibliotecas
 
-- **Django**: back-end e banco de dados (em andamento)
+- **Django**: back-end, rotas das telas e banco de dados
 
 ### Ferramentas
 
 - **VS Code**: editor de código
 - **Git** e **GitHub**: controle de versão
-- **SQLite**: banco de dados padrão do Django (em andamento)
+- **SQLite**: banco de dados padrão do Django
 - **Figma** e **Lovable**: design e protótipos
 - **Kanban do Moodle**: organização das tarefas de cada sprint
 
@@ -74,19 +74,19 @@ Em desenvolvimento. As telas já foram feitas em HTML e CSS. A próxima etapa é
 
 ## Telas
 
-Todas as telas ficam em `ArquivosDeCodigo/TelaDeLogin`, e o CSS de cada uma fica na pasta `css`.
+As telas ficam em `ArquivosDeCodigo/MeuSite/templates`, e o CSS de cada uma fica em `ArquivosDeCodigo/MeuSite/static/css`. A tela de listar usuários ainda está em `ArquivosDeCodigo/TelaDeLogin` e vai passar para o Django na próxima etapa.
 
-| Tela | Arquivo | O que faz |
-| --- | --- | --- |
-| Login | `Tela.html` | Entrar na conta com e-mail e senha |
-| Criar conta | `CriarConta.html` | Cadastro de um novo usuário |
-| Esqueci senha | `EsqueciSenha.html` | Recuperar o acesso à conta |
-| Página inicial | `PaginaInicial.html` | Tela de boas-vindas do usuário |
-| Como usar | `ComoUsar.html` | Explica como usar o MedMap |
-| Artigos | `Artigos.html` | Textos sobre saúde preventiva com fontes oficiais |
-| Edição de usuário | `EdicaoUsuario.html` | Alterar os dados da conta |
-| Remoção de usuário | `RemocaoUsuario.html` | Excluir a conta |
-| Listar usuários | `ListarUsuarios.html` | Mostra os usuários cadastrados, com opções de editar e remover |
+| Tela | Arquivo | Endereço | O que faz |
+| --- | --- | --- | --- |
+| Página inicial | `home.html` | `/` | Tela de boas-vindas do usuário |
+| Login | `Tela.html` | `/Tela/` | Entrar na conta com e-mail e senha |
+| Criar conta | `CriarConta.html` | `/CriarConta/` | Cadastro de um novo usuário |
+| Esqueci senha | `EsqueciSenha.html` | `/EsqueciSenha/` | Recuperar o acesso à conta |
+| Como usar | `ComoUsar.html` | `/ComoUsar/` | Explica como usar o MedMap |
+| Artigos | `Artigos.html` | `/Artigos/` | Textos sobre saúde preventiva com fontes oficiais |
+| Edição de usuário | `EdicaoUsuario.html` | `/EdicaoUsuario/` | Alterar os dados da conta |
+| Remoção de usuário | `RemocaoUsuario.html` | `/RemocaoUsuario/` | Excluir a conta |
+| Listar usuários | `ListarUsuarios.html` | ainda sem rota | Mostra os usuários cadastrados, com opções de editar e remover |
 
 ### Login
 Tela de entrada, onde o usuário digita o e-mail e a senha.
@@ -157,7 +157,7 @@ flowchart LR
 
 ## Arquitetura do projeto
 
-Hoje o projeto tem só o front-end (HTML e CSS). Com o Django, as telas vão virar templates e os dados vão ficar no banco de dados.
+As telas em HTML e CSS ficam como templates do Django. Cada tela tem uma view e uma rota. O próximo passo é guardar os dados no banco de dados.
 
 ```mermaid
 flowchart LR
@@ -167,20 +167,25 @@ flowchart LR
 
 ### Estrutura de pastas
 
-- `ArquivosDeCodigo/TelaDeLogin`: telas do site (HTML)
-- `ArquivosDeCodigo/TelaDeLogin/css`: estilo das telas (CSS)
+- `ArquivosDeCodigo/manage.py`: arquivo para rodar o projeto Django
+- `ArquivosDeCodigo/MeuSite`: configurações, views e rotas (`settings.py`, `views.py`, `urls.py`)
+- `ArquivosDeCodigo/MeuSite/templates`: telas do site (HTML)
+- `ArquivosDeCodigo/MeuSite/static/css`: estilo das telas (CSS)
+- `ArquivosDeCodigo/TelaDeLogin`: tela de listar usuários, que ainda vai passar para o Django
 - `Documentos`: links das atividades de cada sprint
 - `Imagens`: prints das telas usados neste README
 
 ## Como rodar o projeto
 
-Pré-requisitos: ter um navegador e o Git instalados.
+Pré-requisitos: ter o Python, o Git e um navegador instalados.
 
 1. Clone o repositório: `git clone https://github.com/leticiavirgini-png/ENG-4021-Time-2.git`
-2. Abra a pasta `ArquivosDeCodigo/TelaDeLogin`.
-3. Abra o arquivo `Tela.html` no navegador.
+2. Entre na pasta do projeto: `cd ENG-4021-Time-2/ArquivosDeCodigo`
+3. Instale o Django: `pip install -r requirements.txt`
+4. Rode o servidor: `python manage.py runserver`
+5. Abra `http://127.0.0.1:8000/` no navegador.
 
-Não é preciso nenhuma configuração específica, porque o site ainda é só HTML e CSS.
+Não é preciso nenhuma configuração específica.
 
 ## Exemplo de uso
 
@@ -194,7 +199,8 @@ Maria cria uma conta no MedMap e entra no site. Na página **Como usar**, ela v�
 
 ## Melhorias futuras
 
-- Ligar as telas ao banco de dados com Django
+- Passar a tela de listar usuários para o Django
+- Ligar as telas ao banco de dados
 - Criar o perfil de saúde e o histórico familiar
 - Criar o Check-up Inteligente e o calendário de cuidados
 - Enviar lembretes por e-mail
