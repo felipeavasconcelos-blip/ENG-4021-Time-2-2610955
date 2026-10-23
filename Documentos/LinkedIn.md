@@ -1,4 +1,3 @@
-# LinkedIn do MedMap
 
 Página oficial do projeto no LinkedIn:
 
