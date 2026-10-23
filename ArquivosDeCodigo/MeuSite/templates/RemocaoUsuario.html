@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remoção de usuário - MedMap</title>
-    <link rel="stylesheet" href="css/RemocaoUsuario.css">
+    <link rel="stylesheet" href="{% static 'css/RemocaoUsuario.css' %}">
 </head>
 <body>
     <nav>
@@ -32,7 +33,7 @@
                     </label>
 
                     <button type="submit">Excluir conta</button>
-                    <p><a href="Tela.html">Cancelar e voltar a tela inicial</a></p>
+                    <p><a href="{% url 'Tela' %}">Cancelar e voltar a tela inicial</a></p>
                 </form>
             </div>
        </section>

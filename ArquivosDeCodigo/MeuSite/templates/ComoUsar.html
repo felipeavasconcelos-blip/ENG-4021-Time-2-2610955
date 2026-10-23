@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,7 +8,7 @@
 
     <title>Como usar - MedMap</title>
 
-    <link rel="stylesheet" href="css/ComoUsar.css">
+    <link rel="stylesheet" href="{% static 'css/ComoUsar.css' %}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,11 +25,11 @@
 
         <div class="navegacao">
 
-            <a href="PaginaInicial.html">
+            <a href="{% url 'home' %}">
                 Página Inicial
             </a>
 
-            <a href="ComoUsar.html" class="ativo">
+            <a href="{% url 'ComoUsar' %}" class="ativo">
                 Como Usar
             </a>
 
@@ -195,7 +196,7 @@
 
             </div>
 
-            <a href="tela.html">
+            <a href="{% url 'Tela' %}">
                 Entrar na minha conta
                 <span>→</span>
             </a>

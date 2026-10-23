@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esqueci senha - MedMap</title>
-    <link rel="stylesheet" href="css/EsqueciSenha.css">
+    <link rel="stylesheet" href="{% static 'css/EsqueciSenha.css' %}">
 </head>
 <body>
     <nav>
@@ -22,7 +23,7 @@
                     <input type="password" id="senha" placeholder="Mínimo de 6 digitos" minlength="6" required>
 
                     <button type="submit">Criar conta</button>
-                    <p><a href="Tela.html">Voltar a tela de login</a></p>
+                    <p><a href="{% url 'Tela' %}">Voltar a tela de login</a></p>
                 </form>
 
          
