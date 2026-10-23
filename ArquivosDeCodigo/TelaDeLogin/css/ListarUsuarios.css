@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7fbf8;
+    color: #173d37;
+}
+
+nav {
+    background-color: #0f675b;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    margin: 0;
+}
+
+.navegacao {
+    display: flex;
+    gap: 20px;
+}
+
+.navegacao a {
+    color: white;
+    text-decoration: none;
+}
+
+.navegacao a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #0f675b;
+}
+
+/* Caixa de cada usuário */
+.usuario {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #dbe7e2;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.usuario h3 {
+    color: #0f675b;
+    margin: 0 0 5px 0;
+}
+
+.usuario p {
+    margin: 0;
+    color: #55736c;
+}
+
+/* Botões de editar e remover */
+.botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.botoes a {
+    background-color: #0f675b;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.botoes .remover {
+    background-color: white;
+    color: #b3261e;
+    border: 1px solid #b3261e;
+}
+
+/* Botão de cadastrar */
+.novo {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    color: #0f675b;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #55736c;
+}

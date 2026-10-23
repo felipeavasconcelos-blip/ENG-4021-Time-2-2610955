@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigos - MedMap</title>
+    <link rel="stylesheet" href="{% static 'css/Artigos.css' %}">
+</head>
+<body>
+    <nav>
+        <h2>MedMap</h2>
+        <ul class="navegacao">
+            <li><a href="{% url 'home' %}">Página inicial</a></li>
+            <li><a href="{% url 'ComoUsar' %}">Como usar</a></li>
+            <li><a href="{% url 'Artigos' %}">Artigos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="artigos">
+            <h1>Artigos de saúde</h1>
+            <p>Respostas simples para dúvidas comuns sobre saúde e histórico familiar.</p>
+
+            <div class="artigo">
+                <h3>Por que o histórico da família importa na consulta?</h3>
+                <p>Quando um parente tem uma doença, a chance de você também ter aumenta. Sabendo disso, o médico consegue indicar os exames certos na hora certa.</p>
+                <p class="fonte">Fonte: CDC</p>
+            </div>
+
+            <div class="artigo">
+                <h3>Quando fazer mamografia?</h3>
+                <p>Pelo SUS, mulheres de 50 a 74 anos devem fazer a mamografia a cada dois anos. Entre 40 e 49 anos, o exame pode ser feito se a mulher e o médico decidirem juntos.</p>
+                <p class="fonte">Fonte: Ministério da Saúde (2025)</p>
+            </div>
+
+            <div class="artigo">
+                <h3>Com que frequência medir a pressão?</h3>
+                <p>Quem tem mais de 20 anos deve medir a pressão pelo menos uma vez por ano. Se houver casos de pressão alta na família, o ideal é medir duas vezes por ano.</p>
+                <p class="fonte">Fonte: Ministério da Saúde</p>
+            </div>
+
+            <div class="artigo">
+                <h3>Quais vacinas um adulto precisa tomar?</h3>
+                <p>O adulto deve estar em dia com hepatite B, difteria e tétano (reforço a cada 10 anos), febre amarela e tríplice viral.</p>
+                <p class="fonte">Fonte: Calendário de Vacinação do Adulto - Ministério da Saúde</p>
+            </div>
+
+            <p class="aviso">Este conteúdo é informativo e não substitui a consulta com um profissional de saúde.</p>
+
+            <p>Quer receber seu calendário de cuidados? <a href="{% url 'CriarConta' %}">Criar conta</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>MedMap - seu mapa de saúde preventiva</p>
+    </footer>
+</body>
+</html>

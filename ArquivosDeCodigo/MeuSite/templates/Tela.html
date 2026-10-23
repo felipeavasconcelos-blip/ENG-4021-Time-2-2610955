@@ -1,17 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar na conta - MedMap </title>
-    <link rel="stylesheet" href="css/Login.css">
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}">
 </head>
 <body>
     <nav>
         <h2>MedMap</h2>
         <ul class="navegacao">
-            <li><a href="PaginaInicial.html">Página inicial</a></li>
-            <li><a href="ComoUsar.html">Como usar</a></li>
+            <li><a href="{% url 'home' %}">Página inicial</a></li>
+            <li><a href="{% url 'ComoUsar' %}">Como usar</a></li>
         </ul>
     </nav>
 
@@ -31,8 +32,8 @@
                     <button type="submit">Entrar</button>
                 </form>
 
-                <p><a href="EsqueciSenha.html">Esqueci minha senha</a></p>
-                <p>Ainda não tem conta? <a href="CriarConta.html">Criar conta</a></p>
+                <p><a href="{% url 'EsqueciSenha' %}">Esqueci minha senha</a></p>
+                <p>Ainda não tem conta? <a href="{% url 'CriarConta' %}">Criar conta</a></p>
             </div>
         </section>
     </main>

@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar conta - MedMap</title>
-    <link rel="stylesheet" href="css/CriarConta.css">
+    <link rel="stylesheet" href="{% static 'css/CriarConta.css' %}">
 </head>
 
 <body>
@@ -13,8 +14,8 @@
         <h2>MedMap</h2>
 
         <ul class="navegacao">
-            <li><a href="PaginaInicial.html">Página Inicial</a></li>
-            <li><a href="ComoUsar.html">Como Usar</a></li>
+            <li><a href="{% url 'home' %}">Página Inicial</a></li>
+            <li><a href="{% url 'ComoUsar' %}">Como Usar</a></li>
         </ul>
     </nav>
 
@@ -70,7 +71,7 @@
 
                 <p>
                     Já possui uma conta?
-                    <a href="Tela.html">Entrar</a>
+                    <a href="{% url 'Tela' %}">Entrar</a>
                 </p>
 
             </div>
