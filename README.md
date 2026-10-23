@@ -142,28 +142,9 @@ Lista dos usuários cadastrados, com botões para editar e remover cada um.
 5. Em **Artigos**, você lê respostas simples sobre exames, vacinas e histórico familiar.
 6. Para mudar os seus dados ou excluir a conta, use as telas de **Edição** e **Remoção de usuário**.
 
-```mermaid
-flowchart LR
-    A[Login] --> B[Criar conta]
-    A --> C[Esqueci senha]
-    A --> D[Página inicial]
-    B --> A
-    D --> E[Como usar]
-    D --> F[Artigos]
-    D --> G[Listar usuários]
-    G --> H[Edição de usuário]
-    G --> I[Remoção de usuário]
-```
-
 ## Arquitetura do projeto
 
-As telas em HTML e CSS ficam como templates do Django. Cada tela tem uma view e uma rota. O próximo passo é guardar os dados no banco de dados.
-
-```mermaid
-flowchart LR
-    A[Telas em HTML e CSS] --> B[Django: views e rotas]
-    B --> C[(Banco de dados)]
-```
+O projeto usa Django. As telas em HTML e CSS ficam na pasta de templates, e cada tela tem uma view e uma rota. O próximo passo é guardar os dados no banco de dados.
 
 ### Estrutura de pastas
 
