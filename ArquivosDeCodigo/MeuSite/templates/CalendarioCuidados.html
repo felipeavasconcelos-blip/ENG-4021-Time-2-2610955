@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de cuidados - MedMap</title>
+    <link rel="stylesheet" href="{% static 'css/CalendarioCuidados.css' %}">
+</head>
+
+<body>
+
+    <nav>
+        <h1>MedMap</h1>
+
+        <div class="navegacao">
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'ComoUsar' %}">Como usar</a>
+            <a href="{% url 'Tela' %}">Sair</a>
+        </div>
+    </nav>
+
+    <main>
+        <h2>Calendário de cuidados</h2>
+        <p>Veja os seus próximos exames, consultas e vacinas.</p>
+
+        <div class="cuidado">
+            <div>
+                <h3>Medir a pressão</h3>
+                <p>15/11/2026</p>
+            </div>
+            <span class="pendente">Pendente</span>
+        </div>
+
+        <div class="cuidado">
+            <div>
+                <h3>Consulta com clínico geral</h3>
+                <p>02/12/2026</p>
+            </div>
+            <span class="pendente">Pendente</span>
+        </div>
+
+        <div class="cuidado">
+            <div>
+                <h3>Mamografia</h3>
+                <p>10/01/2027</p>
+            </div>
+            <span class="pendente">Pendente</span>
+        </div>
+
+        <div class="cuidado">
+            <div>
+                <h3>Vacina dT (reforço)</h3>
+                <p>20/08/2026</p>
+            </div>
+            <span class="feito">Feito</span>
+        </div>
+    </main>
+
+    <footer>
+        <p>MedMap - Seu cuidado, do seu jeito.</p>
+    </footer>
+
+</body>
+</html>
