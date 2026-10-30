@@ -48,3 +48,8 @@ def HistoricoFamiliar(request):
 def ListarUsuarios(request):
 
     return render(request, 'ListarUsuarios.html')
+
+
+def CalendarioCuidados(request):
+
+    return render(request, 'CalendarioCuidados.html')
