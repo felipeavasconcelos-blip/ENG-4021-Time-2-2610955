@@ -53,3 +53,8 @@ def ListarUsuarios(request):
 def CalendarioCuidados(request):
 
     return render(request, 'CalendarioCuidados.html')
+
+def MeusFamiliares(request):
+
+    return render(request, 'MeusFamiliares.html')
+    
