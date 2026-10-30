@@ -1,3 +1,4 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,7 +14,7 @@
         <h1>MedMap</h1>
 
         <div class="navegacao">
-            <a href="{% url 'PaginaInicial' %}">Início</a>
+            <a href="{% url 'home' %}">Início</a>
             <a href="{% url 'ComoUsar' %}">Como usar</a>
             <a href="{% url 'Tela' %}">Sair</a>
         </div>
