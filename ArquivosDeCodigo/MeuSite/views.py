@@ -18,6 +18,9 @@ def EsqueciSenha (request):
 
     return render(request, 'EsqueciSenha.html')
 
+def ConsentimentoDados(request):
+    return render(request, 'ConsentimentoDados.html')
+
 def CriarConta (request):
 
 
