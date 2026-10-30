@@ -32,6 +32,9 @@ def EdicaoUsuario(request):
 
     return render(request, 'EdicaoUsuario.html')
 
+def PreferenciasNotificacoes(request):
+    return render(request, 'PreferenciasNotificacoes.html')
+
 def RemocaoUsuario(request):
 
     return render(request, 'RemocaoUsuario.html')
