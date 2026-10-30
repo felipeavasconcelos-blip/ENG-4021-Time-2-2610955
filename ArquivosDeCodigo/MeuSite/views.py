@@ -7,6 +7,9 @@ def home(request):
     '''
     return render(request, 'home.html')
 
+def PerfilSaude(request):
+    return render(request, 'PerfilSaude.html')
+
 def ComoUsar(request):
 
 
