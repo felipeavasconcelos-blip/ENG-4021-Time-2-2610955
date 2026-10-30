@@ -30,7 +30,7 @@ urlpatterns = [
 
     path('ComoUsar/', views.ComoUsar, name='ComoUsar'), 
     
-    path('CriarConta/', views.CriacConta, name='CriarConta'), 
+    path('CriarConta/', views.CriarConta, name='CriarConta'), 
     
     path('EdicaoUsuario/', views.EdicaoUsuario, name='EdicaoUsuario'), 
     
