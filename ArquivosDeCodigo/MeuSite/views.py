@@ -18,7 +18,7 @@ def EsqueciSenha (request):
 
     return render(request, 'EsqueciSenha.html')
 
-def CriacConta (request):
+def CriarConta (request):
 
 
     return render(request, 'CriarConta.html')
