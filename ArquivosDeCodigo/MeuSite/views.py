@@ -40,3 +40,11 @@ def Tela(request):
 
 
     return render(request, 'Tela.html')
+
+def HistoricoFamiliar(request):
+
+    return render(request, 'HistoricoFamiliar.html')
+
+def ListarUsuarios(request):
+
+    return render(request, 'ListarUsuarios.html')
