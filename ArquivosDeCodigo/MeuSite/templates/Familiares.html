@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Familiares - MedMap</title>
+    <link rel="stylesheet" href="{% statit 'css/Familiares.css' %}">
+</head>
+<body>
+
+    <nav>
+        <h2>MedMap</h2>
+        <ul class="navegacao">
+            <li><a href="{% url 'home' %}">Página inicial</a></li>
+            <li><a href="{% url 'ComoUsar' %}">Como usar</a></li>
+            <li><a href="{% url 'Artigos' %}">Artigos</a></li>
+            <li><a href="{% url 'Tela' %}">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="familiares">
+
+            <h1>Meus familiares</h1>
+            <p>Organize as informações de saúde da sua família e acompanhe o histórico familiar.</p>
+
+            <p>
+                <a class="botao" href="{% url 'HistoricoFamiliar' %}">
+                    + Adicionar familiar
+                </a>
+            </p>
+
+            <h2>Familiares cadastrados</h2>
+
+                <div class="familiar">
+                    <h3>{{ familiar.parente }}</h3>
+
+                    <p>
+                        <strong>Doença:</strong>
+                        {{ familiar.doenca }}
+                    </p>
+
+                    <p>
+                        <strong>Idade do diagnóstico:</strong>
+                        {{ familiar.idade_diagnostico }} anos
+                    </p>
+                </div>
+
+                <div class="sem-familiares">
+                    <h3>Nenhum familiar cadastrado ainda.</h3>
+                    <p>Comece adicionando informações sobre a saúde da sua família.</p>
+                    <a href="{% url 'HistoricoFamiliar' %}">Adicionar primeiro familiar</a>
+                </div>
+
+            <p class="aviso">
+                As informações registradas ajudam a organizar o histórico de saúde familiar.
+                Elas não substituem uma avaliação médica.
+            </p>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>MedMap - seu mapa de saúde preventiva</p>
+    </footer>
+
+</body>
+</html>
