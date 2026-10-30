@@ -39,5 +39,8 @@ urlpatterns = [
     path('RemocaoUsuario/', views.RemocaoUsuario, name='RemocaoUsuario'), 
     
     path('Tela/', views.Tela, name='Tela'), 
-    
+
+    path('HistoricoFamiliar/', views.HistoricoFamiliar, name='HistoricoFamiliar' ),
+
+    path('ListarUsuarios/',views.ListarUsuarios, name='ListarUsuarios' ),
 ]

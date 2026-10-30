@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico familiar - MedMap</title>
-    <link rel="stylesheet" href="css/HistoricoFamiliar.css">
+    <link rel="stylesheet" href="{% static 'css/HistoricoFamiliar.css' %}">
 </head>
 
 <body>
@@ -14,8 +14,8 @@
         <h2>MedMap</h2>
 
         <ul class="navegacao">
-            <li><a href="/">Página inicial</a></li>
-            <li><a href="/como-usar/">Como usar</a></li>
+            <li><a href="{% url 'home' %}">Página inicial</a></li>
+            <li><a href="{% url 'ComoUsar' %}">Como usar</a></li>
         </ul>
     </nav>
 

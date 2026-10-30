@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar usuários - MedMap</title>
-    <link rel="stylesheet" href="css/ListarUsuarios.css">
+    <link rel="stylesheet" href="{% static 'css/ListarUsuarios.css' %}">
 </head>
 
 <body>
@@ -13,9 +13,9 @@
         <h1>MedMap</h1>
 
         <div class="navegacao">
-            <a href="PaginaInicial.html">Início</a>
-            <a href="ComoUsar.html">Como usar</a>
-            <a href="Tela.html">Sair</a>
+            <a href="{% url 'PaginaInicial' %}">Início</a>
+            <a href="{% url 'ComoUsar' %}">Como usar</a>
+            <a href="{% url 'Tela' %}">Sair</a>
         </div>
     </nav>
 
@@ -29,8 +29,8 @@
                 <p>ana.souza@email.com</p>
             </div>
             <div class="botoes">
-                <a href="EdicaoUsuario.html">Editar</a>
-                <a href="RemocaoUsuario.html">Remover</a>
+                <a href="{% url 'EdicaoUsuario' %}">Editar</a>
+                <a href="{% url 'RemocaoUsuario' %}">Remover</a>
             </div>
         </div>
 
@@ -40,8 +40,8 @@
                 <p>bruno.lima@email.com</p>
             </div>
             <div class="botoes">
-                <a href="EdicaoUsuario.html">Editar</a>
-                <a href="RemocaoUsuario.html">Remover</a>
+                <a href="{% url 'EdicaoUsuario' %}">Editar</a>
+                <a href="{% url 'RemocaoUsuario' %}">Remover</a>
             </div>
         </div>
 
@@ -51,8 +51,8 @@
                 <p>carla.mendes@email.com</p>
             </div>
             <div class="botoes">
-                <a href="EdicaoUsuario.html">Editar</a>
-                <a href="RemocaoUsuario.html">Remover</a>
+                <a href="{% url 'EdicaoUsuario' %}">Editar</a>
+                <a href="{% url 'RemocaoUsuario' %}">Remover</a>
             </div>
         </div>
 
@@ -62,12 +62,12 @@
                 <p>diego.rocha@email.com</p>
             </div>
             <div class="botoes">
-                <a href="EdicaoUsuario.html">Editar</a>
-                <a href="RemocaoUsuario.html">Remover</a>
+                <a href="{% url 'EdicaoUsuario' %}">Editar</a>
+                <a href="{% url 'RemocaoUsuario' %}">Remover</a>
             </div>
         </div>
 
-        <a href="CriarConta.html" class="novo">Cadastrar novo usuário</a>
+        <a href="{% url 'CriarConta' %}" class="novo">Cadastrar novo usuário</a>
     </main>
 
     <footer>
