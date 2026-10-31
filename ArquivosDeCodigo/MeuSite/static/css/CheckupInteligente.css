@@ -1,0 +1,60 @@
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7fbf8;
+    color: #173d37;
+}
+nav {
+    padding: 18px 30px;
+    background: #0f675b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav h2 { margin: 0; color: white; }
+.navegacao { display: flex; gap: 20px; }
+.navegacao a { color: white; text-decoration: none; }
+.navegacao a:hover { text-decoration: underline; }
+main { max-width: 950px; margin: 35px auto; padding: 0 20px; }
+h1, h2 { color: #0f675b; }
+main > p { line-height: 1.5; }
+.aviso {
+    background: #e9f4ef;
+    border-left: 4px solid #0f675b;
+    border-radius: 5px;
+    padding: 16px;
+    margin: 25px 0;
+    line-height: 1.6;
+}
+.cuidados h2 { margin-bottom: 18px; }
+.lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.cartao {
+    background: white;
+    border: 1px solid #dbe7e2;
+    border-radius: 8px;
+    padding: 20px;
+}
+.cartao h3 { color: #0f675b; margin: 15px 0 8px; }
+.cartao p { line-height: 1.5; }
+.categoria {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #e9f4ef;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.situacao { color: #55736c; font-size: 14px; }
+.rodape-aviso { color: #55736c; font-size: 14px; }
+footer { text-align: center; padding: 20px; color: #55736c; }
+@media (max-width: 700px) {
+    nav { flex-direction: column; gap: 14px; }
+    .navegacao { flex-wrap: wrap; justify-content: center; }
+    .lista { grid-template-columns: 1fr; }
+}
