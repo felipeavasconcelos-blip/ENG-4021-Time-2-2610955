@@ -45,6 +45,7 @@ urlpatterns = [
 
     path('HistoricoFamiliar/', views.HistoricoFamiliar, name='HistoricoFamiliar' ),
 
+    path('CheckupInteligente/', views.CheckupInteligente, name='CheckupInteligente'),
     path('ListarUsuarios/',views.ListarUsuarios, name='ListarUsuarios' ),
 
     path('CalendarioCuidados/', views.CalendarioCuidados, name='CalendarioCuidados'),
