@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferências de Notificações - MedMap</title>
+    <link rel="stylesheet" href="{% static 'css/PreferenciasNotificacoes.css' %}">
+</head>
+<body>
+    <nav>
+        <h2>MedMap</h2>
+        <div class="navegacao">
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'ComoUsar' %}">Como usar</a>
+        </div>
+    </nav>
+    <main>
+        <h1>Preferências de notificações</h1>
+        <p>Escolha os avisos que gostaria de receber sobre seus cuidados.</p>
+        <section class="caixa">
+            <h2>Tipos de lembretes</h2>
+            <form>
+                <label class="opcao">
+                    <input type="checkbox" checked>
+                    <span>Consultas agendadas</span>
+                </label>
+                <label class="opcao">
+                    <input type="checkbox" checked>
+                    <span>Exames e acompanhamentos</span>
+                </label>
+                <label class="opcao">
+                    <input type="checkbox">
+                    <span>Vacinas e doses futuras</span>
+                </label>
+                <label for="antecedencia">Quando gostaria de ser avisado?</label>
+                <select id="antecedencia">
+                    <option>1 dia antes</option>
+                    <option>3 dias antes</option>
+                    <option>7 dias antes</option>
+                </select>
+                <label for="email">E-mail de contato</label>
+                <input id="email" type="email" placeholder="voce@email.com">
+                <button type="button" disabled>Salvar preferências (em breve)</button>
+            </form>
+        </section>
+        <p class="aviso">Tela demonstrativa: as preferências não são salvas e nenhum aviso é enviado por e-mail.</p>
+    </main>
+    <footer>MedMap - seu mapa de saúde preventiva</footer>
+</body>
+</html>

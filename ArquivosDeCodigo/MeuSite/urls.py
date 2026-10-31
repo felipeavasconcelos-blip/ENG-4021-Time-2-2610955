@@ -38,6 +38,7 @@ urlpatterns = [
     
     path('EsqueciSenha/', views.EsqueciSenha, name='EsqueciSenha'), 
     
+    path('PreferenciasNotificacoes/', views.PreferenciasNotificacoes, name='PreferenciasNotificacoes'),
     path('RemocaoUsuario/', views.RemocaoUsuario, name='RemocaoUsuario'), 
     
     path('Tela/', views.Tela, name='Tela'), 
