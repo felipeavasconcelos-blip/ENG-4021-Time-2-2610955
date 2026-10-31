@@ -45,6 +45,9 @@ def HistoricoFamiliar(request):
 
     return render(request, 'HistoricoFamiliar.html')
 
+def CheckupInteligente(request):
+    return render(request, 'CheckupInteligente.html')
+
 def ListarUsuarios(request):
 
     return render(request, 'ListarUsuarios.html')
