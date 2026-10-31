@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Preventivo - MedMap</title>
+    <link rel="stylesheet" href="{% static 'css/RelatorioPreventivo.css' %}">
+</head>
+<body>
+    <nav class="nao-imprimir">
+        <h2>MedMap</h2>
+        <div class="navegacao">
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'ComoUsar' %}">Como usar</a>
+        </div>
+    </nav>
+    <main>
+        <h1 class="nao-imprimir">Relatório preventivo</h1>
+        <p class="nao-imprimir">Modelo de organização das informações de saúde para consulta e impressão.</p>
+        <section class="relatorio">
+            <header>
+                <h2>MedMap - Resumo de cuidados</h2>
+                <span>MODELO ILUSTRATIVO</span>
+            </header>
+            <h3>Dados do perfil</h3>
+            <p><strong>Usuário:</strong> Exemplo fictício</p>
+            <p><strong>Histórico de saúde:</strong> Não informado</p>
+            <h3>Cuidados para acompanhamento</h3>
+            <table>
+                <thead>
+                    <tr><th>Categoria</th><th>Objetivo</th><th>Situação</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Consulta</td><td>Acompanhamento de rotina</td><td>Exemplo</td></tr>
+                    <tr><td>Exame</td><td>Avaliação individual</td><td>Exemplo</td></tr>
+                    <tr><td>Vacina</td><td>Conferir carteira de vacinação</td><td>Exemplo</td></tr>
+                </tbody>
+            </table>
+            <p class="alerta">Este relatório contém apenas dados fictícios. Não é uma orientação médica.</p>
+        </section>
+        <button class="nao-imprimir" type="button" onclick="window.print()">Imprimir / salvar como PDF</button>
+        <p class="aviso nao-imprimir">A impressão utiliza o navegador; o sistema ainda não gera relatórios com dados reais.</p>
+    </main>
+    <footer class="nao-imprimir">MedMap - seu mapa de saúde preventiva</footer>
+</body>
+</html>
