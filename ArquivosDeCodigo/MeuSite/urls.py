@@ -31,6 +31,7 @@ urlpatterns = [
 
     path('ComoUsar/', views.ComoUsar, name='ComoUsar'), 
     
+    path('ConsentimentoDados/', views.ConsentimentoDados, name='ConsentimentoDados'),
     path('CriarConta/', views.CriarConta, name='CriarConta'), 
     
     path('EdicaoUsuario/', views.EdicaoUsuario, name='EdicaoUsuario'), 

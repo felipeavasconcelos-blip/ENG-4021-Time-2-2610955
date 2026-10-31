@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consentimento de Dados - MedMap</title>
+    <link rel="stylesheet" href="{% static 'css/ConsentimentoDados.css' %}">
+</head>
+<body>
+    <nav>
+        <h2>MedMap</h2>
+        <div class="navegacao">
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'ComoUsar' %}">Como usar</a>
+        </div>
+    </nav>
+    <main>
+        <h1>Consentimento de dados</h1>
+        <p>Entenda como as informações de saúde poderão ser utilizadas pelo MedMap.</p>
+        <section class="caixa">
+            <h2>Quais dados serão solicitados?</h2>
+            <p>O perfil poderá reunir informações pessoais, hábitos de saúde e histórico familiar para organizar seus cuidados preventivos.</p>
+            <h2>Para que serão utilizados?</h2>
+            <p>O objetivo é reunir seus registros e ajudar a acompanhar exames, vacinas e consultas. O sistema não substitui profissionais de saúde.</p>
+            <h2>Suas escolhas</h2>
+            <form>
+                <label class="opcao">
+                    <input type="checkbox" required>
+                    <span>Concordo com o uso dos meus dados de saúde para as finalidades descritas acima.</span>
+                </label>
+                <label class="opcao">
+                    <input type="checkbox">
+                    <span>Desejo receber lembretes e informações do MedMap (opcional).</span>
+                </label>
+                <button type="button" disabled>Confirmar consentimento (em breve)</button>
+            </form>
+        </section>
+        <p class="aviso">Tela demonstrativa: nenhuma escolha é registrada. A coleta real de dados dependerá de mecanismos de segurança e privacidade.</p>
+    </main>
+    <footer>MedMap - seu mapa de saúde preventiva</footer>
+</body>
+</html>
