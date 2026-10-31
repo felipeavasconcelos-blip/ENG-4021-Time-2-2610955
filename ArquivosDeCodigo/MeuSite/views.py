@@ -69,7 +69,7 @@ def CalendarioCuidados(request):
 def RelatorioPreventivo(request):
     return render(request, 'RelatorioPreventivo.html')
 
-def MeusFamiliares(request):
+def Familiares(request):
 
-    return render(request, 'MeusFamiliares.html')
+    return render(request, 'Familiares.html')
     
