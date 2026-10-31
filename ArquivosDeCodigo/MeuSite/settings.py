@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "MeuSite", 
+    "banco_de_dados.apps.BancoDeDadosConfig",
 ]
 
 MIDDLEWARE = [
