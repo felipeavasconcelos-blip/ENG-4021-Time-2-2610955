@@ -38,6 +38,7 @@ urlpatterns = [
     path('EsqueciSenha/', views.EsqueciSenha, name='EsqueciSenha'), 
     
     path('PreferenciasNotificacoes/', views.PreferenciasNotificacoes, name='PreferenciasNotificacoes'),
+    
     path('RemocaoUsuario/', views.RemocaoUsuario, name='RemocaoUsuario'), 
     
     path('Tela/', views.Tela, name='Tela'), 
@@ -45,11 +46,14 @@ urlpatterns = [
     path('HistoricoFamiliar/', views.HistoricoFamiliar, name='HistoricoFamiliar' ),
 
     path('CheckupInteligente/', views.CheckupInteligente, name='CheckupInteligente'),
+   
     path('ListarUsuarios/',views.ListarUsuarios, name='ListarUsuarios' ),
 
     path('CalendarioCuidados/', views.CalendarioCuidados, name='CalendarioCuidados'),
 
     path('RelatorioPreventivo/', views.RelatorioPreventivo, name='RelatorioPreventivo'),
-    path('MeusFamiliares/', views.MeusFamiliares, name='MeusFamiliares'),
+   
+    path('Familiares/', views.Familiares, name='Familiares'),
+    
     path('PerfilSaude/', views.PerfilSaude, name='PerfilSaude'),
 ]
