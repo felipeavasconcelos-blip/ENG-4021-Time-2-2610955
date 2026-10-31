@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-up Inteligente - MedMap</title>
+    <link rel="stylesheet" href="{% static 'css/CheckupInteligente.css' %}">
+</head>
+<body>
+    <nav>
+        <h2>MedMap</h2>
+        <div class="navegacao">
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'ComoUsar' %}">Como usar</a>
+        </div>
+    </nav>
+    <main>
+        <h1>Check-up Inteligente</h1>
+        <p>Veja como seus cuidados preventivos poderão ser organizados em um só lugar.</p>
+        <section class="aviso">
+            <strong>Exemplo de interface:</strong> os itens abaixo são ilustrativos.
+            O sistema ainda não faz recomendações com base em dados de saúde.
+        </section>
+        <section class="cuidados">
+            <h2>Categorias de acompanhamento</h2>
+            <div class="lista">
+                <article class="cartao">
+                    <span class="categoria">Consultas</span>
+                    <h3>Acompanhamento de rotina</h3>
+                    <p>Converse com um profissional de saúde para avaliar seus cuidados.</p>
+                    <p class="situacao">Situação: exemplo</p>
+                </article>
+                <article class="cartao">
+                    <span class="categoria">Exames</span>
+                    <h3>Exames preventivos</h3>
+                    <p>A necessidade de exames depende de avaliação individual.</p>
+                    <p class="situacao">Situação: exemplo</p>
+                </article>
+                <article class="cartao">
+                    <span class="categoria">Vacinas</span>
+                    <h3>Carteira de vacinação</h3>
+                    <p>Organize o acompanhamento das vacinas registradas.</p>
+                    <p class="situacao">Situação: exemplo</p>
+                </article>
+            </div>
+        </section>
+        <p class="rodape-aviso">O Check-up Inteligente terá regras próprias em uma etapa futura. Esta página não substitui orientação médica.</p>
+    </main>
+    <footer>MedMap - seu mapa de saúde preventiva</footer>
+</body>
+</html>
