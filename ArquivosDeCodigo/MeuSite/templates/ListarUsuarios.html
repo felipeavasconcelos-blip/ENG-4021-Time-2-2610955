@@ -24,49 +24,20 @@
         <h2>Usuários cadastrados</h2>
         <p>Veja a lista de usuários do MedMap.</p>
 
+        {% for usuario in usuarios %}
         <div class="usuario">
             <div>
-                <h3>Ana Souza</h3>
-                <p>ana.souza@email.com</p>
+                <h3>{{ usuario.nome }}</h3>
+                <p>{{ usuario.email }}</p>
             </div>
             <div class="botoes">
                 <a href="{% url 'EdicaoUsuario' %}">Editar</a>
                 <a href="{% url 'RemocaoUsuario' %}">Remover</a>
             </div>
         </div>
-
-        <div class="usuario">
-            <div>
-                <h3>Bruno Lima</h3>
-                <p>bruno.lima@email.com</p>
-            </div>
-            <div class="botoes">
-                <a href="{% url 'EdicaoUsuario' %}">Editar</a>
-                <a href="{% url 'RemocaoUsuario' %}">Remover</a>
-            </div>
-        </div>
-
-        <div class="usuario">
-            <div>
-                <h3>Carla Mendes</h3>
-                <p>carla.mendes@email.com</p>
-            </div>
-            <div class="botoes">
-                <a href="{% url 'EdicaoUsuario' %}">Editar</a>
-                <a href="{% url 'RemocaoUsuario' %}">Remover</a>
-            </div>
-        </div>
-
-        <div class="usuario">
-            <div>
-                <h3>Diego Rocha</h3>
-                <p>diego.rocha@email.com</p>
-            </div>
-            <div class="botoes">
-                <a href="{% url 'EdicaoUsuario' %}">Editar</a>
-                <a href="{% url 'RemocaoUsuario' %}">Remover</a>
-            </div>
-        </div>
+        {% empty %}
+        <p>Nenhum usuário cadastrado.</p>
+        {% endfor %}
 
         <a href="{% url 'CriarConta' %}" class="novo">Cadastrar novo usuário</a>
     </main>

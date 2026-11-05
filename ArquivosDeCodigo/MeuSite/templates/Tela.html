@@ -23,12 +23,18 @@
             <p>Use seu e-mail e uma senha de pelo menos 6 caracteres.</p>
 
             <div id="caixa">
-                <form>
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% if erro %}
+                        <p class="erro">{{ erro }}</p>
+                    {% endif %}
+
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="voce@email.com" required>
+                    <input type="email" id="email" name="email" placeholder="voce@email.com" required>
 
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" minlength="6" required>
+                    <input type="password" id="senha" name="senha" minlength="6" required>
 
                     <button type="submit">Entrar</button>
                 </form>
