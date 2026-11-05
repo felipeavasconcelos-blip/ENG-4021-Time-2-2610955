@@ -9,7 +9,7 @@ O MedMap é uma aplicação web de saúde preventiva. Muitas pessoas não sabem 
 
 ## Status do projeto
 
-Em desenvolvimento. As telas já foram feitas em HTML e CSS e já estão no projeto Django, com uma rota para cada tela. A próxima etapa é ligar as telas ao banco de dados.
+Em desenvolvimento. As telas estão no projeto Django, com uma rota para cada tela, e o banco de dados já foi criado com dados de exemplo. O login, a lista de usuários e o calendário de cuidados já usam os dados do banco. A próxima etapa é ligar as outras telas ao banco.
 
 ## Sumário
 
@@ -39,12 +39,14 @@ Em desenvolvimento. As telas já foram feitas em HTML e CSS e já estão no proj
 
 ## Funcionalidades
 
-- Criar conta, entrar na conta e recuperar a senha
-- Editar e excluir a conta
-- Listar os usuários cadastrados
-- Registrar o histórico de saúde da família
+- Entrar na conta com e-mail e senha (já funciona com o banco de dados)
+- Listar os usuários cadastrados (já funciona com o banco de dados)
+- Calendário de cuidados com os próximos exames, consultas e vacinas (já funciona com o banco de dados)
+- Criar conta, recuperar a senha, editar e excluir a conta
+- Perfil de saúde, consentimento de dados e preferências de notificações
+- Registrar o histórico de saúde da família e os familiares
 - Check-up Inteligente: sugerir consultas, exames e vacinas de acordo com a idade, o sexo, os hábitos e o histórico familiar
-- Calendário de cuidados com lembretes
+- Relatório preventivo com o resumo dos cuidados
 - Página de artigos com dúvidas comuns sobre saúde preventiva
 
 ## Tecnologias
@@ -62,7 +64,7 @@ Em desenvolvimento. As telas já foram feitas em HTML e CSS e já estão no proj
 
 - **VS Code**: editor de código
 - **Git** e **GitHub**: controle de versão
-- **SQLite**: banco de dados padrão do Django
+- **SQLite**: banco de dados do projeto (arquivo `db.sqlite3`)
 - **Figma** e **Lovable**: design e protótipos
 - **Kanban do Moodle**: organização das tarefas de cada sprint
 
@@ -74,7 +76,7 @@ Em desenvolvimento. As telas já foram feitas em HTML e CSS e já estão no proj
 
 ## Telas
 
-As telas ficam em `ArquivosDeCodigo/MeuSite/templates`, e o CSS de cada uma fica em `ArquivosDeCodigo/MeuSite/static/css`. A tela de listar usuários ainda está em `ArquivosDeCodigo/TelaDeLogin` e vai passar para o Django na próxima etapa.
+As telas ficam em `ArquivosDeCodigo/MeuSite/templates`, e o CSS de cada uma fica em `ArquivosDeCodigo/MeuSite/static/css`.
 
 | Tela | Arquivo | Endereço | O que faz |
 | --- | --- | --- | --- |
@@ -86,10 +88,18 @@ As telas ficam em `ArquivosDeCodigo/MeuSite/templates`, e o CSS de cada uma fica
 | Artigos | `Artigos.html` | `/Artigos/` | Textos sobre saúde preventiva com fontes oficiais |
 | Edição de usuário | `EdicaoUsuario.html` | `/EdicaoUsuario/` | Alterar os dados da conta |
 | Remoção de usuário | `RemocaoUsuario.html` | `/RemocaoUsuario/` | Excluir a conta |
-| Listar usuários | `ListarUsuarios.html` | ainda sem rota | Mostra os usuários cadastrados, com opções de editar e remover |
+| Listar usuários | `ListarUsuarios.html` | `/ListarUsuarios/` | Mostra os usuários cadastrados no banco, com opções de editar e remover |
+| Histórico familiar | `HistoricoFamiliar.html` | `/HistoricoFamiliar/` | Registrar as doenças dos parentes |
+| Familiares | `Familiares.html` | `/Familiares/` | Lista dos familiares cadastrados |
+| Calendário de cuidados | `CalendarioCuidados.html` | `/CalendarioCuidados/` | Mostra os próximos cuidados do banco, com a data e a situação |
+| Perfil de saúde | `PerfilSaude.html` | `/PerfilSaude/` | Informações pessoais e hábitos de saúde |
+| Consentimento de dados | `ConsentimentoDados.html` | `/ConsentimentoDados/` | Autorizar o uso dos dados de saúde |
+| Preferências de notificações | `PreferenciasNotificacoes.html` | `/PreferenciasNotificacoes/` | Escolher os lembretes que quer receber |
+| Check-up Inteligente | `CheckupInteligente.html` | `/CheckupInteligente/` | Cuidados preventivos recomendados |
+| Relatório preventivo | `RelatorioPreventivo.html` | `/RelatorioPreventivo/` | Resumo dos cuidados de saúde do usuário |
 
 ### Login
-Tela de entrada, onde o usuário digita o e-mail e a senha.
+Tela de entrada, onde o usuário digita o e-mail e a senha. Os dados são conferidos no banco de dados.
 
 ![Tela de login](Imagens/login.png)
 
@@ -129,22 +139,59 @@ Tela para excluir a conta, com aviso e confirmação.
 ![Tela de remoção de usuário](Imagens/remocao-usuario.png)
 
 ### Listar usuários
-Lista dos usuários cadastrados, com botões para editar e remover cada um.
+Lista dos usuários cadastrados no banco de dados, com botões para editar e remover cada um.
 
 ![Tela de listar usuários](Imagens/listar-usuarios.png)
+
+### Histórico familiar
+Tela para registrar as doenças dos parentes.
+
+![Tela de histórico familiar](Imagens/historico-familiar.png)
+
+### Calendário de cuidados
+Próximos exames, consultas e vacinas, vindos do banco de dados, com a data e a situação de cada um.
+
+![Tela de calendário de cuidados](Imagens/calendario-cuidados.png)
+
+### Perfil de saúde
+Formulário com as informações pessoais, os hábitos e os objetivos de saúde.
+
+![Tela de perfil de saúde](Imagens/perfil-saude.png)
+
+### Consentimento de dados
+Explica quais dados de saúde o MedMap usa e pede a autorização do usuário.
+
+![Tela de consentimento de dados](Imagens/consentimento-dados.png)
+
+### Preferências de notificações
+Escolha dos lembretes e da antecedência dos avisos.
+
+![Tela de preferências de notificações](Imagens/preferencias-notificacoes.png)
+
+### Check-up Inteligente
+Cuidados preventivos recomendados, com a situação de cada um.
+
+![Tela de check-up inteligente](Imagens/checkup-inteligente.png)
+
+### Relatório preventivo
+Resumo dos cuidados de saúde do usuário, com opção de imprimir.
+
+![Tela de relatório preventivo](Imagens/relatorio-preventivo.png)
 
 ## Fluxo de uso
 
 1. Entre na tela de **Login**. Se ainda não tiver conta, clique em **Criar conta**.
 2. Se esquecer a senha, use a tela **Esqueci senha**.
 3. Depois de entrar, você chega na **Página inicial**.
-4. Em **Como usar**, você vê o passo a passo do MedMap.
-5. Em **Artigos**, você lê respostas simples sobre exames, vacinas e histórico familiar.
-6. Para mudar os seus dados ou excluir a conta, use as telas de **Edição** e **Remoção de usuário**.
+4. Preencha o **Perfil de saúde**, o **Consentimento de dados** e o **Histórico familiar**.
+5. Veja os cuidados recomendados no **Check-up Inteligente** e as datas no **Calendário de cuidados**.
+6. Em **Relatório preventivo**, veja o resumo dos seus cuidados.
+7. Em **Como usar** e **Artigos**, leia o passo a passo do MedMap e textos sobre saúde preventiva.
+8. Para mudar os seus dados ou excluir a conta, use as telas de **Edição** e **Remoção de usuário**.
 
 ## Arquitetura do projeto
 
-O projeto usa Django. As telas em HTML e CSS ficam na pasta de templates, e cada tela tem uma view e uma rota. O próximo passo é guardar os dados no banco de dados.
+O projeto usa Django. As telas em HTML e CSS ficam na pasta de templates, e cada tela tem uma view e uma rota. Os dados ficam no banco de dados SQLite, nas tabelas Usuário, Perfil, Histórico familiar e Cuidado, que seguem a modelagem de dados do projeto.
 
 ### Estrutura de pastas
 
@@ -152,7 +199,9 @@ O projeto usa Django. As telas em HTML e CSS ficam na pasta de templates, e cada
 - `ArquivosDeCodigo/MeuSite`: configurações, views e rotas (`settings.py`, `views.py`, `urls.py`)
 - `ArquivosDeCodigo/MeuSite/templates`: telas do site (HTML)
 - `ArquivosDeCodigo/MeuSite/static/css`: estilo das telas (CSS)
-- `ArquivosDeCodigo/TelaDeLogin`: tela de listar usuários, que ainda vai passar para o Django
+- `ArquivosDeCodigo/banco_de_dados`: tabelas do banco de dados (`models.py`)
+- `ArquivosDeCodigo/db.sqlite3`: banco de dados com os dados de exemplo
+- `ArquivosDeCodigo/popular_banco.py`: arquivo que coloca os dados de exemplo no banco
 - `Documentos`: links das atividades de cada sprint
 - `Imagens`: prints das telas usados neste README
 
@@ -166,7 +215,9 @@ Pré-requisitos: ter o Python, o Git e um navegador instalados.
 4. Rode o servidor: `python manage.py runserver`
 5. Abra `http://127.0.0.1:8000/` no navegador.
 
-Não é preciso nenhuma configuração específica.
+O banco de dados já vem com dados de exemplo. Para entrar no site, use o e-mail `ana@medmap.com` e a senha `MedMapDemo123!`. Se precisar recriar os dados de exemplo, rode `python popular_banco.py` dentro da pasta `ArquivosDeCodigo`.
+
+Também dá para rodar pelo GitHub Codespaces, sem instalar nada: no repositório, clique em **Code**, depois em **Codespaces** e em **Create codespace on main**, e siga os passos 2 a 4 no terminal.
 
 ## Exemplo de uso
 
@@ -180,10 +231,9 @@ Maria cria uma conta no MedMap e entra no site. Na página **Como usar**, ela v�
 
 ## Melhorias futuras
 
-- Passar a tela de listar usuários para o Django
-- Ligar as telas ao banco de dados
-- Criar o perfil de saúde e o histórico familiar
-- Criar o Check-up Inteligente e o calendário de cuidados
+- Ligar as outras telas ao banco de dados (criar conta, edição, remoção, perfil e histórico familiar)
+- Mostrar no calendário só os cuidados do usuário que entrou na conta
+- Fazer o Check-up Inteligente sugerir os cuidados de forma automática
 - Enviar lembretes por e-mail
 - Permitir vários perfis na mesma conta (por exemplo, pais e filhos)
 
