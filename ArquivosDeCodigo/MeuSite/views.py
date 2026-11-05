@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import check_password
+from datetime import date
+from banco_de_dados.models import Usuario, Cuidado
 
 def home(request):
     '''
@@ -47,6 +50,16 @@ def RemocaoUsuario(request):
 
 def Tela(request):
 
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+
+        usuario = Usuario.objects.filter(email=email).first()
+
+        if usuario and check_password(senha, usuario.senha):
+            return redirect('home')
+
+        return render(request, 'Tela.html', {'erro': 'E-mail ou senha incorretos.'})
 
     return render(request, 'Tela.html')
 
@@ -59,12 +72,17 @@ def CheckupInteligente(request):
 
 def ListarUsuarios(request):
 
-    return render(request, 'ListarUsuarios.html')
+    usuarios = Usuario.objects.all()
+
+    return render(request, 'ListarUsuarios.html', {'usuarios': usuarios})
 
 
 def CalendarioCuidados(request):
 
-    return render(request, 'CalendarioCuidados.html')
+    cuidados = Cuidado.objects.order_by('data')
+    hoje = date.today()
+
+    return render(request, 'CalendarioCuidados.html', {'cuidados': cuidados, 'hoje': hoje})
 
 def RelatorioPreventivo(request):
     return render(request, 'RelatorioPreventivo.html')
