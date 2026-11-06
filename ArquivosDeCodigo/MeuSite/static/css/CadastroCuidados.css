@@ -5,18 +5,34 @@ body {
     background: #f7fbf8;
     color: #173d37;
 }
-nav {
-    background: #0f675b;
-    padding: 18px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
+nav{
+    padding:18px 30px;
+    background:#0f675b;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
-nav h2 { margin: 0; color: white; }
-.navegacao { display: flex; gap: 20px; }
-.navegacao a { color: white; text-decoration: none; }
-.navegacao a:hover { text-decoration: underline; }
+
+nav h2{
+    margin:0;
+    color:white;
+}
+
+.navegacao{
+    display:flex;
+    gap:20px;
+}
+
+.navegacao a{
+    color:white;
+    text-decoration:none;
+}
+
+.navegacao a:hover{
+    text-decoration:underline;
+}
+
 main { max-width: 750px; margin: 35px auto; padding: 0 20px; }
 h1, h2 { color: #0f675b; }
 main > p { line-height: 1.5; }

@@ -5,27 +5,33 @@ body {
     color: #173d37;
 }
 
-/* Menu do topo */
-nav {
-    background-color: #0f675b;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+nav{
+    padding:18px 30px;
+    background:#0f675b;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-nav h1 {
-    margin: 0;
+nav h2{
+    margin:0;
+    color:white;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+.navegacao{
+    display:flex;
+    gap:20px;
 }
 
-/* Conteúdo no centro da página */
+.navegacao a{
+    color:white;
+    text-decoration:none;
+}
+
+.navegacao a:hover{
+    text-decoration:underline;
+}
 main {
     max-width: 800px;
     margin: 40px auto;

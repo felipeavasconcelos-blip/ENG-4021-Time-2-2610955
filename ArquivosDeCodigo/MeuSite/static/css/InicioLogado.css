@@ -11,8 +11,6 @@ body {
     min-height: 100vh;
 }
 
-/* MENU SUPERIOR */
-
 nav {
     background-color: #0f675b;
     color: white;
@@ -40,15 +38,11 @@ nav h1 span {
     object-fit: contain;
 }
 
-/* CONTEÚDO PRINCIPAL */
-
 main {
     max-width: 1150px;
     margin: 0 auto;
     padding: 65px 30px 45px;
 }
-
-/* BOAS-VINDAS */
 
 .boas-vindas {
     margin-bottom: 40px;
@@ -79,8 +73,6 @@ main {
     max-width: 550px;
 }
 
-/* CARTÕES */
-
 .areas-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -107,8 +99,6 @@ main {
     box-shadow: 0 15px 28px rgba(15, 70, 60, 0.20);
 }
 
-/* CORES DOS CARTÕES */
-
 .saude {
     background: linear-gradient(135deg, #0f675b, #1d8370);
 }
@@ -124,8 +114,6 @@ main {
 .perfil {
     background: linear-gradient(135deg, #174e49, #39796d);
 }
-
-/* PARTE SUPERIOR DOS CARTÕES */
 
 .card-topo {
     display: flex;
@@ -151,8 +139,6 @@ main {
     font-size: 25px;
     color: white;
 }
-
-/* TEXTOS DOS CARTÕES */
 
 .card-conteudo h3 {
     font-size: 25px;
@@ -180,16 +166,12 @@ main {
     transform: translate(4px, -4px);
 }
 
-/* RODAPÉ */
-
 footer {
     text-align: center;
     color: #779188;
     font-size: 13px;
     padding: 15px 20px 25px;
 }
-
-/* RESPONSIVIDADE */
 
 @media (max-width: 700px) {
 
