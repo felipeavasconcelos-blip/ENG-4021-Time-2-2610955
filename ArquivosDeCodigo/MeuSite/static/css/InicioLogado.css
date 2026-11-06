@@ -1,0 +1,225 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f7fbf8, #eaf3ee);
+    color: #173d37;
+    min-height: 100vh;
+}
+
+/* MENU SUPERIOR */
+
+nav {
+    background-color: #0f675b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 90px;
+    box-shadow: 0 4px 15px rgba(0, 50, 40, 0.12);
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+}
+
+nav h1 span {
+    color: #a9d6c4;
+}
+
+.logo img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+main {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 65px 30px 45px;
+}
+
+/* BOAS-VINDAS */
+
+.boas-vindas {
+    margin-bottom: 40px;
+}
+
+.subtitulo {
+    color: #4a927e;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.boas-vindas h2 {
+    font-size: 38px;
+    margin: 0 0 12px;
+    color: #173d37;
+}
+
+.boas-vindas h2 span {
+    color: #0f675b;
+}
+
+.descricao {
+    color: #668078;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 550px;
+}
+
+/* CARTÕES */
+
+.areas-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.area-card {
+    min-height: 225px;
+    padding: 25px 28px;
+    border-radius: 18px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(15, 70, 60, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 28px rgba(15, 70, 60, 0.20);
+}
+
+/* CORES DOS CARTÕES */
+
+.saude {
+    background: linear-gradient(135deg, #0f675b, #1d8370);
+}
+
+.cuidados {
+    background: linear-gradient(135deg, #267e6e, #429b83);
+}
+
+.familia {
+    background: linear-gradient(135deg, #3d8e7a, #65a994);
+}
+
+.perfil {
+    background: linear-gradient(135deg, #174e49, #39796d);
+}
+
+/* PARTE SUPERIOR DOS CARTÕES */
+
+.card-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.numero {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #c8e6db;
+}
+
+.icone {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: white;
+}
+
+/* TEXTOS DOS CARTÕES */
+
+.card-conteudo h3 {
+    font-size: 25px;
+    margin: 0 0 9px;
+}
+
+.card-conteudo p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e1f0eb;
+    max-width: 350px;
+    margin: 0;
+}
+
+.seta {
+    position: absolute;
+    right: 27px;
+    bottom: 22px;
+    font-size: 25px;
+    color: #d4ebe2;
+    transition: transform 0.3s ease;
+}
+
+.area-card:hover .seta {
+    transform: translate(4px, -4px);
+}
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+    color: #779188;
+    font-size: 13px;
+    padding: 15px 20px 25px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 15px 20px;
+        min-height: 75px;
+    }
+
+    nav h1 {
+        font-size: 25px;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+    main {
+        padding: 40px 20px;
+    }
+
+    .boas-vindas h2 {
+        font-size: 29px;
+    }
+
+    .areas-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .area-card {
+        min-height: 190px;
+    }
+}

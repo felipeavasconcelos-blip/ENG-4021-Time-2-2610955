@@ -1,0 +1,112 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedMap | Início</title>
+    <link rel="stylesheet" href="{% static 'css/InicioLogado.css' %}">
+</head>
+
+<body>
+
+    <nav>
+        <h1>MedMap<span>.</span></h1>
+
+        <div class="logo">
+            <img src="{% static 'Imagens/logo.png' %}" alt="Logo MedMap">
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="boas-vindas">
+            <p class="subtitulo">SEU ESPAÇO DE SAÚDE</p>
+            <h2>Bem-vindo ao <span>MedMap</span></h2>
+            <p class="descricao">
+                Tudo o que você precisa para cuidar da sua saúde
+                e acompanhar o bem-estar da sua família.
+            </p>
+        </section>
+
+        <section class="areas-container">
+
+            <a href="{% url 'PerfilSaude' %}" class="area-card saude">
+                <div class="card-topo">
+                    <span class="numero">01</span>
+                    <span class="icone">♡</span>
+                </div>
+
+                <div class="card-conteudo">
+                    <h3>Minha Saúde</h3>
+                    <p>
+                        Acompanhe suas informações de saúde,
+                        checkups e relatórios preventivos.
+                    </p>
+                </div>
+
+                <span class="seta">↗</span>
+            </a>
+
+            <a href="{% url 'CalendarioCuidados' %}" class="area-card cuidados">
+                <div class="card-topo">
+                    <span class="numero">02</span>
+                    <span class="icone">▦</span>
+                </div>
+
+                <div class="card-conteudo">
+                    <h3>Cuidados</h3>
+                    <p>
+                        Organize consultas, exames, vacinas
+                        e seus próximos cuidados.
+                    </p>
+                </div>
+
+                <span class="seta">↗</span>
+            </a>
+
+            <a href="{% url 'Familiares' %}" class="area-card familia">
+                <div class="card-topo">
+                    <span class="numero">03</span>
+                    <span class="icone">♧</span>
+                </div>
+
+                <div class="card-conteudo">
+                    <h3>Família</h3>
+                    <p>
+                        Organize os dados de saúde dos seus
+                        familiares e seu histórico familiar.
+                    </p>
+                </div>
+
+                <span class="seta">↗</span>
+            </a>
+
+            <a href="{% url 'EdicaoUsuario' %}" class="area-card perfil">
+                <div class="card-topo">
+                    <span class="numero">04</span>
+                    <span class="icone">◉</span>
+                </div>
+
+                <div class="card-conteudo">
+                    <h3>Meu Perfil</h3>
+                    <p>
+                        Gerencie seus dados pessoais,
+                        preferências e privacidade.
+                    </p>
+                </div>
+
+                <span class="seta">↗</span>
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer>
+        MedMap — Seu cuidado, do seu jeito.
+    </footer>
+
+</body>
+</html>
