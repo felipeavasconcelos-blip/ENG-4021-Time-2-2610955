@@ -143,4 +143,7 @@ def RelatorioPreventivo(request):
 def Familiares(request):
 
     return render(request, 'Familiares.html')
-    
+
+# View da tela de cadastro (formulário ainda sem gravação no banco).
+def CadastroCuidados(request):
+    return render(request, 'CadastroCuidados.html')
