@@ -33,13 +33,21 @@ urlpatterns = [
     path('ConsentimentoDados/', views.ConsentimentoDados, name='ConsentimentoDados'),
     path('CriarConta/', views.CriarConta, name='CriarConta'), 
     
-    path('EdicaoUsuario/', views.EdicaoUsuario, name='EdicaoUsuario'), 
+    path(
+        'EdicaoUsuario/<int:usuario_id>/',
+        views.EdicaoUsuario,
+        name='EdicaoUsuario'
+    ),
     
     path('EsqueciSenha/', views.EsqueciSenha, name='EsqueciSenha'), 
     
     path('PreferenciasNotificacoes/', views.PreferenciasNotificacoes, name='PreferenciasNotificacoes'),
     
-    path('RemocaoUsuario/', views.RemocaoUsuario, name='RemocaoUsuario'), 
+    path(
+        'RemocaoUsuario/<int:usuario_id>/',
+        views.RemocaoUsuario,
+        name='RemocaoUsuario'
+    ),
     
     path('Tela/', views.Tela, name='Tela'), 
 

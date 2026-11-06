@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.hashers import check_password
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.hashers import check_password, make_password
 from datetime import date
 from django.utils.dateparse import parse_date
 from banco_de_dados.models import Usuario, Cuidado
@@ -28,7 +28,47 @@ def EsqueciSenha (request):
 def ConsentimentoDados(request):
     return render(request, 'ConsentimentoDados.html')
 
-def CriarConta (request):
+def CriarConta(request):
+
+    if request.method == 'POST':
+
+        nome = request.POST.get('nome', '').strip()
+        email = request.POST.get('email', '').strip().lower()
+        senha = request.POST.get('senha', '')
+        confirmar_senha = request.POST.get('confirmar_senha', '')
+
+        
+        if senha != confirmar_senha:
+            return render(request, 'CriarConta.html', {
+                'erro': 'As senhas não coincidem.',
+                'nome': nome,
+                'email': email
+            })
+
+        
+        if len(senha) < 6:
+            return render(request, 'CriarConta.html', {
+                'erro': 'A senha deve ter pelo menos 6 caracteres.',
+                'nome': nome,
+                'email': email
+            })
+
+        
+        if Usuario.objects.filter(email=email).exists():
+            return render(request, 'CriarConta.html', {
+                'erro': 'Este e-mail já está cadastrado.',
+                'nome': nome,
+                'email': email
+            })
+
+        
+        Usuario.objects.create(
+            nome=nome,
+            email=email,
+            senha=make_password(senha)
+        )
+
+        return redirect('ListarUsuarios')
 
 
     return render(request, 'CriarConta.html')
@@ -38,16 +78,96 @@ def Artigos (request):
 
     return render(request, 'Artigos.html')
 
-def EdicaoUsuario(request):
+def EdicaoUsuario(request, usuario_id):
 
-    return render(request, 'EdicaoUsuario.html')
+    usuario = get_object_or_404(Usuario, id=usuario_id)
+
+    if request.method == 'POST':
+
+        nome = request.POST.get('nome', '').strip()
+        email = request.POST.get('email', '').strip().lower()
+        senha = request.POST.get('senha', '')
+
+        
+        email_existente = Usuario.objects.filter(
+            email=email
+        ).exclude(id=usuario.id).exists()
+
+        if email_existente:
+            return render(request, 'EdicaoUsuario.html', {
+                'usuario': usuario,
+                'erro': 'Este e-mail já está sendo utilizado.'
+            })
+
+        if not nome or not email:
+            return render(request, 'EdicaoUsuario.html', {
+                'usuario': usuario,
+                'erro': 'Nome e e-mail são obrigatórios.'
+            })
+
+        usuario.nome = nome
+        usuario.email = email
+
+        
+        if senha:
+            if len(senha) < 6:
+                return render(request, 'EdicaoUsuario.html', {
+                    'usuario': usuario,
+                    'erro': 'A nova senha deve ter pelo menos 6 caracteres.'
+                })
+
+            usuario.senha = make_password(senha)
+
+        usuario.save()
+
+        return redirect('InicioLogado')
+
+    return render(request, 'EdicaoUsuario.html', {
+        'usuario': usuario
+    })
 
 def PreferenciasNotificacoes(request):
     return render(request, 'PreferenciasNotificacoes.html')
 
-def RemocaoUsuario(request):
+def RemocaoUsuario(request, usuario_id):
 
-    return render(request, 'RemocaoUsuario.html')
+    usuario = get_object_or_404(Usuario, id=usuario_id)
+
+    if request.method == 'POST':
+
+        email = request.POST.get('email', '').strip().lower()
+        senha = request.POST.get('senha', '')
+        confirmacao = request.POST.get('confirmacao')
+
+        
+        if email != usuario.email:
+            return render(request, 'RemocaoUsuario.html', {
+                'usuario': usuario,
+                'erro': 'O e-mail informado não corresponde à conta.'
+            })
+
+        
+        if not check_password(senha, usuario.senha):
+            return render(request, 'RemocaoUsuario.html', {
+                'usuario': usuario,
+                'erro': 'Senha incorreta.'
+            })
+
+        
+        if confirmacao != 'sim':
+            return render(request, 'RemocaoUsuario.html', {
+                'usuario': usuario,
+                'erro': 'Você precisa confirmar a exclusão.'
+            })
+
+        
+        usuario.delete()
+
+        return redirect('home')
+
+    return render(request, 'RemocaoUsuario.html', {
+        'usuario': usuario
+    })
 
 def Tela(request):
 
