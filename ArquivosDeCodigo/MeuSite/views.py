@@ -62,13 +62,13 @@ def CriarConta(request):
             })
 
         
-        Usuario.objects.create(
+        usuario = Usuario.objects.create(
             nome=nome,
             email=email,
             senha=make_password(senha)
         )
-
-        return redirect('ListarUsuarios')
+        request.session['usuario_id'] = usuario.id
+        return redirect('InicioLogado')
 
 
     return render(request, 'CriarConta.html')
@@ -162,7 +162,7 @@ def RemocaoUsuario(request, usuario_id):
 
         
         usuario.delete()
-
+        request.session.flush()
         return redirect('home')
 
     return render(request, 'RemocaoUsuario.html', {
@@ -178,6 +178,7 @@ def Tela(request):
         usuario = Usuario.objects.filter(email=email).first()
 
         if usuario and check_password(senha, usuario.senha):
+            request.session['usuario_id'] = usuario.id
             return redirect('InicioLogado')
 
         return render(request, 'Tela.html', {'erro': 'E-mail ou senha incorretos.'})
@@ -199,7 +200,7 @@ def ListarUsuarios(request):
 
 
 def CalendarioCuidados(request):
-    # Filtros combinados aplicados no banco de dados.
+    
     cuidados = Cuidado.objects.all()
     tipos_validos = ('Consulta', 'Exame', 'Vacina')
 
@@ -264,9 +265,14 @@ def Familiares(request):
 
     return render(request, 'Familiares.html')
 
-# View da tela de cadastro (formulário ainda sem gravação no banco).
+
 def CadastroCuidados(request):
     return render(request, 'CadastroCuidados.html')
 
 def InicioLogado(request):
-    return render (request, 'InicioLogado.html')
+    usuario_id = request.session.get('usuario_id')
+    usuario = get_object_or_404(Usuario, id=usuario_id)
+
+    return render(request, 'InicioLogado.html', {
+        'usuario': usuario
+    })
