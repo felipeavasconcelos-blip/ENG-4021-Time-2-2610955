@@ -15,9 +15,7 @@
 
     <div class="navegacao">
         <a href="{% url 'InicioLogado' %}">Início</a>
-        <a href="{% url 'PreferenciasNotificacoes' %}">Preferências</a>
-        <a href="{% url 'ConsentimentoDados' %}">Consentimento</a>
-        <a href="{% url 'RemocaoUsuario' %}">Remoção</a>
+        <a href="{% url 'RemocaoUsuario' usuario.id %}">Remoção</a>
     </div>
 </nav>
 
@@ -30,31 +28,51 @@
 
 <form>
 
-<div id="foto-perfil">
-    <img id="previa" hidden>
-    <span id="iniciais">+</span>
-</div>
+<form method="POST">
+    {% csrf_token %}
 
-<label id="botao-foto" for="foto">Alterar foto de perfil</label>
-<input type="file" id="foto" accept="image/*">
+    {% if erro %}
+        <p class="erro">{{ erro }}</p>
+    {% endif %}
 
-<label for="nome">Nome completo</label>
-<input type="text" id="nome" placeholder="Seu nome">
+    <label for="nome">Nome completo</label>
+    <input
+        type="text"
+        id="nome"
+        name="nome"
+        value="{{ usuario.nome }}"
+        required
+    >
 
-<label for="email">E-mail</label>
-<input type="email" id="email" placeholder="voce@email.com">
+    <label for="email">E-mail</label>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        value="{{ usuario.email }}"
+        required
+    >
 
-<label for="telefone">Telefone</label>
-<input type="tel" id="telefone" placeholder="(00) 00000-0000">
+    <label for="senha">Nova senha</label>
+    <input
+        type="password"
+        id="senha"
+        name="senha"
+        placeholder="Deixe em branco para manter a atual"
+        minlength="6"
+    >
 
-<label for="senha">Nova senha</label>
-<input type="password" id="senha" placeholder="Deixe em branco para manter a atual">
+    <button type="submit">Salvar alterações</button>
 
-<button>Salvar alterações</button>
+    <p>
+        <a href="{% url 'ListarUsuarios' %}">Voltar à lista</a>
+    </p>
 
-<p><a href="{% url 'InicioLogado' %}">Voltar ao início</a></p>
-<p><a href="{% url 'RemocaoUsuario' %}">Excluir minha conta</a></p>
-
+    <p>
+        <a href="{% url 'RemocaoUsuario' usuario.id %}">
+            Excluir minha conta
+        </a>
+    </p>
 </form>
 
 </div>
