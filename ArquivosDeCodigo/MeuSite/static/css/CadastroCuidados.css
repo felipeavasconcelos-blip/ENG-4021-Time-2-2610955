@@ -1,0 +1,61 @@
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7fbf8;
+    color: #173d37;
+}
+nav {
+    background: #0f675b;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+nav h2 { margin: 0; color: white; }
+.navegacao { display: flex; gap: 20px; }
+.navegacao a { color: white; text-decoration: none; }
+.navegacao a:hover { text-decoration: underline; }
+main { max-width: 750px; margin: 35px auto; padding: 0 20px; }
+h1, h2 { color: #0f675b; }
+main > p { line-height: 1.5; }
+.formulario {
+    background: white;
+    border: 1px solid #dbe7e2;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 22px 0;
+}
+.formulario h2 { margin-top: 0; }
+label { display: block; font-weight: bold; margin: 16px 0 6px; }
+input, select, textarea {
+    width: 100%;
+    border: 1px solid #becfc9;
+    border-radius: 5px;
+    padding: 11px;
+    font: inherit;
+    background: white;
+}
+textarea { resize: vertical; }
+button {
+    margin-top: 22px;
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 5px;
+    font: inherit;
+    font-weight: bold;
+    background: #92b4aa;
+    color: white;
+    cursor: not-allowed;
+}
+.aviso { color: #55736c; font-size: 14px; }
+.voltar { color: #0f675b; text-decoration: none; }
+.voltar:hover { text-decoration: underline; }
+footer { text-align: center; padding: 25px; color: #55736c; }
+@media (max-width: 600px) {
+    nav { flex-direction: column; gap: 15px; text-align: center; }
+    .navegacao { flex-wrap: wrap; justify-content: center; }
+    .formulario { padding: 18px; }
+}
