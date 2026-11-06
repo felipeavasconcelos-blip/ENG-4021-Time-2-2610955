@@ -4,45 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial - MedMap</title>
+    <title>MedMap | Página Inicial</title>
     <link rel="stylesheet" href="{% static 'css/InicioUsuario.css' %}">
 </head>
-
+                
 <body>
-
+                
     <nav>
         <h1>MedMap</h1>
-
-        <div class="navegacao">
-            <a href="{% url 'Tela' %}">login</a>
-            <a href="{% url 'ComoUsar' %}">Como usar</a>
-            <a href="{% url 'Artigos' %}">Artigos</a>
+                            
+        <div class="logo">
         </div>
     </nav>
-
+                                                                                    
     <main>
-        <h2>Bem-vindo ao MedMap!</h2>
-        <p>Seu cuidado, do seu jeito.</p>
+          
+        <div class="buttons-container">
 
-        <section>
-            <h3>Histórico familiar</h3>
-            <p>Organize informações sobre a saúde da sua família.</p>
-        </section>
+            <a href="Tela.html" class="main-button">
+                Entrar
+            </a>
 
-        <section>
-            <h3>Consultas e exames</h3>
-            <p>Acompanhe suas consultas e seus exames importantes.</p>
-        </section>
+            <a href="ComoUsar.html" class="main-button">
+                Como Usar
+            </a>
 
-        <section>
-            <h3>Prevenção</h3>
-            <p>Cuide da sua saúde com mais informação e organização.</p>
-        </section>
+            <a href="Artigos.html" class="main-button">
+                Artigos
+            </a>
+
+        </div>
+
     </main>
 
-    <footer>
-        <p>MedMap - Seu cuidado, do seu jeito.</p>
-    </footer>
-
 </body>
-</html>
