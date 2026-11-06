@@ -58,7 +58,7 @@ def Tela(request):
         usuario = Usuario.objects.filter(email=email).first()
 
         if usuario and check_password(senha, usuario.senha):
-            return redirect('home')
+            return redirect('InicioLogado')
 
         return render(request, 'Tela.html', {'erro': 'E-mail ou senha incorretos.'})
 
@@ -147,3 +147,6 @@ def Familiares(request):
 # View da tela de cadastro (formulário ainda sem gravação no banco).
 def CadastroCuidados(request):
     return render(request, 'CadastroCuidados.html')
+
+def InicioLogado(request):
+    return render (request, 'InicioLogado.html')
