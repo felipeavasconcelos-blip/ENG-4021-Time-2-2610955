@@ -32,9 +32,11 @@
                 <p>{{ cuidado.tipo }} - {{ cuidado.data|date:"d/m/Y" }}</p>
             </div>
             {% if cuidado.data < hoje %}
-                <span class="feito">Feito</span>
+                <span class="atrasado">Data passada</span>
+            {% elif cuidado.data == hoje %}
+                <span class="hoje">Hoje</span>
             {% else %}
-                <span class="pendente">Pendente</span>
+                <span class="programado">Programado</span>
             {% endif %}
         </div>
         {% empty %}
