@@ -25,6 +25,44 @@
         <h2>Calendário de cuidados</h2>
         <p>Veja os seus próximos exames, consultas e vacinas.</p>
 
+        <form method="get" class="filtros" action="{% url 'CalendarioCuidados' %}">
+            <h3>Filtrar cuidados</h3>
+            <div class="campos-filtro">
+                <div class="campo-filtro">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" name="tipo">
+                        <option value="">Todos os tipos</option>
+                        {% for opcao in tipos_cuidado %}
+                        <option value="{{ opcao }}" {% if tipo_selecionado == opcao %}selected{% endif %}>{{ opcao }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="campo-filtro">
+                    <label for="inicio">Data inicial</label>
+                    <input id="inicio" type="date" name="inicio" value="{{ inicio }}">
+                </div>
+                <div class="campo-filtro">
+                    <label for="fim">Data final</label>
+                    <input id="fim" type="date" name="fim" value="{{ fim }}">
+                </div>
+                <div class="campo-filtro">
+                    <label for="ordem">Ordenar</label>
+                    <select id="ordem" name="ordem">
+                        <option value="asc" {% if ordem == 'asc' %}selected{% endif %}>Data crescente</option>
+                        <option value="desc" {% if ordem == 'desc' %}selected{% endif %}>Data decrescente</option>
+                    </select>
+                </div>
+            </div>
+            <div class="acoes-filtro">
+                <button type="submit">Aplicar filtros</button>
+                <a href="{% url 'CalendarioCuidados' %}">Limpar</a>
+            </div>
+        </form>
+        {% if mensagem_erro %}
+        <p class="mensagem-filtro" role="alert">{{ mensagem_erro }}</p>
+        {% endif %}
+        <p class="total-cuidados">{{ total_cuidados }} cuidado(s) encontrado(s).</p>
+
         {% for cuidado in cuidados %}
         <div class="cuidado">
             <div>

@@ -72,3 +72,50 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
+/* Filtros de consultas, exames e vacinas */
+.filtros {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid #dbe7e2;
+    border-radius: 8px;
+    background: white;
+}
+.filtros h3 { margin: 0 0 15px; }
+.campos-filtro {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+.campo-filtro label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+.campo-filtro input, .campo-filtro select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b6ccc4;
+    border-radius: 5px;
+    background: white;
+    color: #173d37;
+    font: inherit;
+}
+.acoes-filtro { margin-top: 16px; display: flex; align-items: center; gap: 16px; }
+.acoes-filtro button {
+    background: #0f675b;
+    border: 0;
+    padding: 11px 18px;
+    border-radius: 5px;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+.acoes-filtro a { color: #0f675b; text-decoration: underline; }
+.total-cuidados { margin-top: 20px; color: #55736c; }
+.mensagem-filtro { color: #9e402f; font-weight: bold; }
+@media (max-width: 600px) {
+    .campos-filtro { grid-template-columns: 1fr; }
+    .filtros { padding: 15px; }
+}
