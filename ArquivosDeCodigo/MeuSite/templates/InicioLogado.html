@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -8,68 +7,21 @@
     <title>MedMap | Início</title>
     <link rel="stylesheet" href="{% static 'css/InicioLogado.css' %}">
 </head>
-
 <body>
-
     <nav>
         <h2>MedMap</h2>
-
         <div class="logo">
-            <details class="trocar-conta">
-                <summary>Trocar de conta</summary>
-
-                <div class="menu-contas">
-                    <p>Contas utilizadas</p>
-
-                    
-{% if erro_troca %}
-    <p class="erro-troca">{{ erro_troca }}</p>
-{% endif %}
-
-{% for conta in contas_utilizadas %}
-    <div class="conta-item">
-        <span>{{ conta.nome }}</span>
-        <small>{{ conta.email }}</small>
-
-        {% if conta.id == usuario.id %}
-            <span>Conta atual</span>
-        {% else %}
-            <form method="POST" action="{% url 'TrocarConta' %}">
-                {% csrf_token %}
-                <input type="hidden" name="conta_id" value="{{ conta.id }}">
-
-                <input
-                    type="password"
-                    name="senha"
-                    placeholder="Senha desta conta"
-                    aria-label="Senha de {{ conta.nome }}"
-                    required
-                >
-
-                <button type="submit">Entrar nesta conta</button>
-            </form>
-        {% endif %}
-    </div>
-{% empty %}
-    <p>Nenhuma conta encontrada.</p>
-{% endfor %}
-
-                </div>
-            </details>
-
-            
+            <a href="{% url 'InicioLogado' %}" class="btn-sair">Início</a>
+            <a href="{% url 'MinhaConta' %}" class="btn-sair">Minha conta</a>
             <a href="{% url 'Sair' %}" class="btn-sair">
                 <span class="icone-sair">↪</span>
                 Sair
             </a>
-
-
             <img src="{% static 'Imagens/logo.png' %}" alt="Logo MedMap">
         </div>
     </nav>
 
     <main>
-
         <section class="boas-vindas">
             <p class="subtitulo">SEU ESPAÇO DE SAÚDE</p>
             <h2>Olá, <span>{{ usuario.nome }}</span></h2>
@@ -80,7 +32,6 @@
         </section>
 
         <section class="fluxo">
-
             <a href="{% url 'PerfilSaude' %}" class="area-card saude">
                 <span class="numero">01</span>
                 <div class="card-conteudo">
@@ -88,9 +39,7 @@
                     <p>Preencha sua idade, sexo e hábitos.</p>
                 </div>
             </a>
-
             <span class="seta-fluxo">→</span>
-
             <a href="{% url 'HistoricoFamiliar' %}" class="area-card cuidados">
                 <span class="numero">02</span>
                 <div class="card-conteudo">
@@ -98,9 +47,7 @@
                     <p>Registre as doenças dos seus familiares.</p>
                 </div>
             </a>
-
             <span class="seta-fluxo">→</span>
-
             <a href="{% url 'CheckupInteligente' %}" class="area-card familia">
                 <span class="numero">03</span>
                 <div class="card-conteudo">
@@ -108,11 +55,9 @@
                     <p>Veja os exames e cuidados recomendados para você.</p>
                 </div>
             </a>
-
         </section>
 
         <section class="calendario-inicio">
-
             <div class="calendario-grande">
                 <h2>Meu calendário</h2>
                 {% load calendario_inicio %}
@@ -121,14 +66,12 @@
 
             <div class="proximos-inicio">
                 <h2>Próximos cuidados</h2>
-
                 {% for cuidado in proximos_cuidados %}
                 <article class="proximo-item">
                     <div>
                         <strong>{{ cuidado.nome }}</strong>
                         <span>{{ cuidado.tipo }} - {{ cuidado.data|date:"d/m/Y" }}</span>
                     </div>
-
                     <form method="POST" action="{% url 'AtualizarCuidado' cuidado.id %}">
                         {% csrf_token %}
                         <input type="hidden" name="acao" value="concluir">
@@ -146,12 +89,9 @@
                 {% empty %}
                 <p class="proximos-vazio">Nenhum cuidado agendado no momento.</p>
                 {% endfor %}
-
                 <a href="{% url 'CadastroCuidados' %}" class="novo-cuidado">+ Novo cuidado</a>
             </div>
-
         </section>
-
     </main>
 
     <footer>
@@ -160,6 +100,5 @@
             Avaliar o MedMap
         </a>
     </footer>
-
 </body>
 </html>

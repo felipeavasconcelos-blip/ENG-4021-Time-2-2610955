@@ -1,0 +1,244 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f7fbf8;
+    color: #173d37;
+}
+
+nav {
+    padding: 20px;
+    background: #0f675b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    margin: 0;
+    color: white;
+}
+
+.navegacao {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navegacao a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navegacao a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 900px;
+    margin: 45px auto;
+    padding: 0 25px;
+}
+
+h1, h2 {
+    color: #0f675b;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.identificacao,
+.opcoes,
+.trocar-conta,
+.excluir-conta {
+    margin-bottom: 25px;
+    padding: 25px;
+    background: white;
+    border: 1px solid #dbe7e2;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.identificacao p {
+    margin: 6px 0;
+}
+
+.nome-usuario {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.email-usuario {
+    color: #55736c;
+}
+
+.opcoes h2,
+.trocar-conta h2,
+.excluir-conta h2 {
+    margin-top: 0;
+}
+
+.opcao {
+    display: block;
+    margin-top: 12px;
+    padding: 16px;
+    border: 1px solid #dbe7e2;
+    border-radius: 8px;
+    color: #173d37;
+    text-decoration: none;
+}
+
+.opcao:hover {
+    border-color: #0f675b;
+    background: #f7fbf8;
+}
+
+.opcao strong,
+.opcao span {
+    display: block;
+}
+
+.opcao span {
+    margin-top: 5px;
+    color: #55736c;
+    font-size: 14px;
+}
+
+.conta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #dbe7e2;
+}
+
+.conta-item:last-child {
+    border-bottom: none;
+}
+
+.conta-item small {
+    display: block;
+    margin-top: 4px;
+    color: #668078;
+}
+
+.conta-atual {
+    color: #0f675b;
+    font-weight: bold;
+}
+
+.conta-item form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: min(100%, 280px);
+}
+
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #c9d8d2;
+    border-radius: 6px;
+    font: inherit;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #0f675b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0b5048;
+}
+
+.erro {
+    padding: 10px 12px;
+    color: #9b2c2c;
+    background: #fff0f0;
+    border-radius: 5px;
+}
+
+.excluir-conta {
+    border-color: #e8b8b5;
+}
+
+.excluir-conta h2 {
+    color: #b3261e;
+}
+
+.excluir-conta p {
+    color: #665b5b;
+}
+
+.excluir-conta a {
+    display: inline-block;
+    padding: 11px 18px;
+    background: #b3261e;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.excluir-conta a:hover {
+    background: #8f1d17;
+}
+
+.voltar {
+    text-align: center;
+}
+
+.voltar a,
+main > p > a {
+    color: #0f675b;
+    font-weight: bold;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: #55736c;
+}
+
+@media (max-width: 700px) {
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .navegacao {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 18px;
+    }
+
+    .identificacao,
+    .opcoes,
+    .trocar-conta,
+    .excluir-conta {
+        padding: 20px;
+    }
+
+    .conta-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

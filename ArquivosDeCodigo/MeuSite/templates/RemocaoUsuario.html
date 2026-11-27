@@ -11,8 +11,9 @@
     <nav>
        <h2>MedMap</h2>
        <ul class="navegacao">
-            <a href="{% url 'InicioLogado' %}">Inicio</a>
-            <a href="{% url 'EdicaoUsuario' usuario.id %}">Editar Usuário</a>
+            <a href="{% url 'InicioLogado' %}">Início</a>
+            <a href="{% url 'MinhaConta' %}">Minha conta</a>
+            <a href="{% url 'Sair' %}">Sair</a>
        </ul>
     </nav>
     <main>
@@ -64,7 +65,7 @@
                   <button type="submit">Excluir conta</button>
 
                   <p>
-                    <a href="{% url 'ListarUsuarios' %}">
+                    <a href="{% url 'MinhaConta' %}">
                       Cancelar e voltar
                     </a>
                   </p>

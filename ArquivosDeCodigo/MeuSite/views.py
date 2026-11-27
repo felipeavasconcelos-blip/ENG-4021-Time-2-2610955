@@ -74,8 +74,34 @@ def EsqueciSenha (request):
 
     return render(request, 'EsqueciSenha.html')
 
+def MinhaConta(request):
+    usuario_id = request.session.get('usuario_id')
+
+    if not usuario_id:
+        return redirect('Tela')
+
+    usuario = get_object_or_404(Usuario, id=usuario_id)
+    contas_utilizadas = Usuario.objects.filter(
+        id__in=request.session.get('contas_utilizadas', [])
+    )
+
+    return render(request, 'MinhaConta.html', {
+        'usuario': usuario,
+        'contas_utilizadas': contas_utilizadas
+    })
+
+
 def ConsentimentoDados(request):
-    return render(request, 'ConsentimentoDados.html')
+    usuario_id = request.session.get('usuario_id')
+
+    if not usuario_id:
+        return redirect('Tela')
+
+    usuario = get_object_or_404(Usuario, id=usuario_id)
+
+    return render(request, 'ConsentimentoDados.html', {
+        'usuario': usuario
+    })
 
 def CriarConta(request):
 
@@ -189,7 +215,16 @@ def EdicaoUsuario(request, usuario_id):
     })
 
 def PreferenciasNotificacoes(request):
-    return render(request, 'PreferenciasNotificacoes.html')
+    usuario_id = request.session.get('usuario_id')
+
+    if not usuario_id:
+        return redirect('Tela')
+
+    usuario = get_object_or_404(Usuario, id=usuario_id)
+
+    return render(request, 'PreferenciasNotificacoes.html', {
+        'usuario': usuario
+    })
 
 
 def RemocaoUsuario(request, usuario_id):
@@ -748,10 +783,10 @@ def TrocarConta(request):
     conta = Usuario.objects.filter(id=conta_id).first()
 
     if not conta or not check_password(senha, conta.senha):
-        return render(request, 'InicioLogado.html', {
+        return render(request, 'MinhaConta.html', {
             'usuario': get_object_or_404(Usuario, id=usuario_id),
             'contas_utilizadas': Usuario.objects.filter(id__in=contas_ids),
-            'erro_troca': 'Senha incorreta. Tente novamente.'
+            'erro_troca': 'Senha incorreta'
         })
 
     request.session.cycle_key()

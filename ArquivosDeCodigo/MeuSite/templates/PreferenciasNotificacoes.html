@@ -10,12 +10,11 @@
 <body>
     <nav>
         <h2>MedMap</h2>
-        <ul class="navegacao">
+        <div class="navegacao">
             <a href="{% url 'InicioLogado' %}">Início</a>
-            <a href="{% url 'EdicaoUsuario' %}">Editar Usuário</a>
-            <a href="{% url 'ConsentimentoDados' %}">Consentimento de Dados</a>
-            <a href="{% url 'RemocaoUsuario' %}">Remoção de Usuário</a>
-        </ul>
+            <a href="{% url 'MinhaConta' %}">Minha conta</a>
+            <a href="{% url 'Sair' %}">Sair</a>
+        </div>
     </nav>
     <main>
         <h1>Preferências de notificações</h1>
@@ -47,6 +46,7 @@
             </form>
         </section>
         <p class="aviso">Tela demonstrativa: as preferências não são salvas e nenhum aviso é enviado por e-mail.</p>
+        <p><a href="{% url 'MinhaConta' %}">Voltar para Minha conta</a></p>
     </main>
     <footer>MedMap - seu mapa de saúde preventiva</footer>
 </body>
