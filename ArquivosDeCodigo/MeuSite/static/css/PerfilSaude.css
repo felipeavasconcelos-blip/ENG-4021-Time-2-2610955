@@ -196,3 +196,22 @@ button:hover { background: #0b5046; }
         grid-template-columns: 1fr;
     }
 }
+.habitos {
+    margin: 10px 0 20px;
+}
+
+.habitos p {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.habitos label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.habitos input {
+    width: auto;
+    margin-right: 6px;
+}

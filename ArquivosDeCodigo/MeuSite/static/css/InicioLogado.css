@@ -84,30 +84,28 @@ main {
     max-width: 550px;
 }
 
-.areas-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+.fluxo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .area-card {
-    min-height: 225px;
-    padding: 25px 28px;
+    flex: 1;
+    min-height: 170px;
+    padding: 25px;
     border-radius: 18px;
     color: white;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    overflow: hidden;
     box-shadow: 0 8px 22px rgba(15, 70, 60, 0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .area-card:hover {
     transform: translateY(-7px);
-    box-shadow: 0 15px 28px rgba(15, 70, 60, 0.20);
 }
 
 .saude {
@@ -122,16 +120,6 @@ main {
     background: linear-gradient(135deg, #3d8e7a, #65a994);
 }
 
-.perfil {
-    background: linear-gradient(135deg, #174e49, #39796d);
-}
-
-.card-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .numero {
     font-size: 13px;
     font-weight: bold;
@@ -139,20 +127,8 @@ main {
     color: #c8e6db;
 }
 
-.icone {
-    width: 43px;
-    height: 43px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    color: white;
-}
-
 .card-conteudo h3 {
-    font-size: 25px;
+    font-size: 23px;
     margin: 0 0 9px;
 }
 
@@ -160,21 +136,111 @@ main {
     font-size: 14px;
     line-height: 1.6;
     color: #e1f0eb;
-    max-width: 350px;
     margin: 0;
 }
 
-.seta {
-    position: absolute;
-    right: 27px;
-    bottom: 22px;
-    font-size: 25px;
-    color: #d4ebe2;
-    transition: transform 0.3s ease;
+.seta-fluxo {
+    font-size: 40px;
+    color: #0f675b;
+    font-weight: bold;
 }
 
-.area-card:hover .seta {
-    transform: translate(4px, -4px);
+.calendario-inicio {
+    display: flex;
+    gap: 25px;
+    margin-top: 45px;
+    align-items: flex-start;
+}
+
+.calendario-inicio h2 {
+    color: #0f675b;
+    margin: 0 0 15px;
+}
+
+.calendario-grande {
+    flex: 2;
+    background: white;
+    border: 1px solid #dcebe4;
+    border-radius: 18px;
+    padding: 25px;
+}
+
+.calendario-grande .calendario-resumo-inicio {
+    padding: 0;
+}
+
+.calendario-grande .calendario-mes {
+    font-size: 18px;
+}
+
+.calendario-grande .calendario-semana {
+    font-size: 14px;
+}
+
+.calendario-grande .calendario-dia {
+    padding: 18px 0;
+    font-size: 16px;
+}
+
+.calendario-grande .legenda-calendario {
+    font-size: 13px;
+}
+
+.proximos-inicio {
+    flex: 1;
+}
+
+.proximo-item {
+    background: white;
+    border: 1px solid #dcebe4;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.proximo-item strong {
+    color: #173d37;
+    display: block;
+}
+
+.proximo-item span {
+    color: #668078;
+    font-size: 13px;
+    display: block;
+    margin: 5px 0 10px;
+}
+
+.proximo-item select {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #dcebe4;
+}
+
+.proximo-item button {
+    background: #0f675b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 14px;
+    cursor: pointer;
+}
+
+.proximos-vazio {
+    color: #668078;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.novo-cuidado {
+    display: block;
+    text-align: center;
+    background: #0f675b;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 14px;
 }
 
 footer {
@@ -185,6 +251,14 @@ footer {
 }
 
 @media (max-width: 700px) {
+
+    .fluxo, .calendario-inicio {
+        flex-direction: column;
+    }
+
+    .seta-fluxo {
+        transform: rotate(90deg);
+    }
 
     nav {
         padding: 20px;
