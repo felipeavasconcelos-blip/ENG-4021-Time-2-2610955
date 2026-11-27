@@ -9,64 +9,70 @@
 </head>
 <body>
     <nav>
-        <h2>MedMap</h2>
-        <div class="navegacao">
+       <h2>MedMap</h2>
+       <ul class="navegacao">
             <a href="{% url 'InicioLogado' %}">Início</a>
             <a href="{% url 'MinhaConta' %}">Minha conta</a>
             <a href="{% url 'Sair' %}">Sair</a>
-        </div>
+       </ul>
     </nav>
-
     <main>
-        <section id="RemoverUsuario">
-            <h1>Exclua a sua conta</h1>
-            <p>Esta ação é permanente e não poderá ser desfeita.</p>
-            <div id="caixa">
+       <section id="Remover Usuario">
+           <h1>Exclua a sua Conta</h1>
+           <p>Esta ação é permanente e não poderá ser desfeita.</p>
+           <div id="caixa">
                 <form method="POST">
-                    {% csrf_token %}
-                    {% if erro %}
-                        <p class="erro">{{ erro }}</p>
-                    {% endif %}
+                  {% csrf_token %}
 
-                    <div id="aviso">
-                        Ao excluir a sua conta, todos os seus dados e informações
-                        salvas no MedMap serão removidos definitivamente.
-                    </div>
+                  {% if erro %}
+                    <p class="erro">{{ erro }}</p>
+                  {% endif %}
 
-                    <label for="email">E-mail</label>
+                  <div id="aviso">
+                    Ao excluir a sua conta, todos os seus dados e informações
+                    salvas no MedMap serão removidos definitivamente.
+                  </div>
+
+                  <label for="email">E-mail</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ usuario.email }}"
+                    required
+                  >
+
+                  <label for="senha">Confirme sua senha</label>
+                  <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    required
+                  >
+
+                  <label id="confirmacao" for="confirmacao-checkbox">
                     <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value="{{ usuario.email }}"
-                        required
+                      type="checkbox"
+                      id="confirmacao-checkbox"
+                      name="confirmacao"
+                      value="sim"
+                      required
                     >
+                  Entendo que esta ação não pode ser desfeita
+                  </label>
 
-                    <label for="senha">Confirme sua senha</label>
-                    <input
-                        type="password"
-                        id="senha"
-                        name="senha"
-                        placeholder="Digite sua senha"
-                        required
-                    >
+                  <button type="submit">Excluir conta</button>
 
-                    <label id="confirmacao" for="confirmacao-checkbox">
-                        <input
-                            type="checkbox"
-                            id="confirmacao-checkbox"
-                            name="confirmacao"
-                            value="sim"
-                            required
-                        >
-                        Entendo que esta ação não pode ser desfeita
-                    </label>
-
-                    <button type="submit">Excluir conta</button>
-                    <p><a href="{% url 'MinhaConta' %}">Cancelar e voltar</a></p>
+                  <p>
+                    <a href="{% url 'MinhaConta' %}">
+                      Cancelar e voltar
+                    </a>
+                  </p>
                 </form>
             </div>
-        </section>
+       </section>
     </main>
+
 </body>
 </html>
