@@ -18,6 +18,9 @@ class Perfil(models.Model):
     nome = models.CharField(max_length=100)
     data_nascimento = models.DateField()
     sexo = models.CharField(max_length=20)
+    fuma = models.BooleanField(default=False)
+    bebe = models.BooleanField(default=False)
+    sedentario = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome
