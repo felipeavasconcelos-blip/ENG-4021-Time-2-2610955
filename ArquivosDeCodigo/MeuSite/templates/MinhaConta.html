@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha conta - MedMap</title>
+    <link rel="stylesheet" href="{% static 'css/MinhaConta.css' %}">
+</head>
+<body>
+    <nav>
+        <h2>MedMap</h2>
+        <div class="navegacao">
+            <a href="{% url 'InicioLogado' %}">Início</a>
+            <a href="{% url 'MinhaConta' %}">Minha conta</a>
+            <a href="{% url 'Sair' %}">Sair</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="identificacao">
+            <h1>Minha conta</h1>
+            <p class="nome-usuario">{{ usuario.nome }}</p>
+            <p class="email-usuario">{{ usuario.email }}</p>
+        </section>
+
+        <section class="opcoes">
+            <h2>Opções da conta</h2>
+            <a class="opcao" href="{% url 'EdicaoUsuario' usuario.id %}">
+                <strong>Editar dados da conta</strong>
+                <span>Altere seu nome, e-mail ou senha.</span>
+            </a>
+            <a class="opcao" href="{% url 'ConsentimentoDados' %}">
+                <strong>Consentimento de dados</strong>
+                <span>Consulte as informações sobre o uso dos seus dados.</span>
+            </a>
+            <a class="opcao" href="{% url 'PreferenciasNotificacoes' %}">
+                <strong>Preferências de notificação</strong>
+                <span>Consulte as opções de lembretes do MedMap.</span>
+            </a>
+        </section>
+
+        <section class="trocar-conta">
+            <h2>Trocar de conta</h2>
+            {% if erro_troca %}
+                <p class="erro">{{ erro_troca }}</p>
+            {% endif %}
+
+            {% for conta in contas_utilizadas %}
+                <div class="conta-item">
+                    <div>
+                        <strong>{{ conta.nome }}</strong>
+                        <small>{{ conta.email }}</small>
+                    </div>
+                    {% if conta.id == usuario.id %}
+                        <span class="conta-atual">Conta atual</span>
+                    {% else %}
+                        <form method="POST" action="{% url 'TrocarConta' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="conta_id" value="{{ conta.id }}">
+                            <input
+                                type="password"
+                                name="senha"
+                                placeholder="Senha desta conta"
+                                aria-label="Senha de {{ conta.nome }}"
+                                required
+                            >
+                            <button type="submit">Entrar nesta conta</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>Nenhuma conta encontrada.</p>
+            {% endfor %}
+        </section>
+
+        <section class="excluir-conta">
+            <h2>Excluir conta</h2>
+            <p>Esta ação é permanente e remove sua conta do MedMap.</p>
+            <a href="{% url 'RemocaoUsuario' usuario.id %}">Excluir conta</a>
+        </section>
+
+        <p class="voltar">
+            <a href="{% url 'InicioLogado' %}">Voltar ao início</a>
+        </p>
+    </main>
+
+    <footer>MedMap - seu mapa de saúde preventiva</footer>
+</body>
+</html>

@@ -15,7 +15,8 @@
 
     <ul class="navegacao">
         <a href="{% url 'InicioLogado' %}">Início</a>
-        <a href="{% url 'RemocaoUsuario' usuario.id %}">Remoção</a>
+        <a href="{% url 'MinhaConta' %}">Minha conta</a>
+        <a href="{% url 'Sair' %}">Sair</a>
     </ul>
 </nav>
 
@@ -25,8 +26,6 @@
 <p>Atualize suas informações e sua foto de perfil.</p>
 
 <div id="caixa">
-
-
 
 <form method="POST">
     {% csrf_token %}
@@ -65,7 +64,7 @@
     <button type="submit">Salvar alterações</button>
 
     <p>
-        <a href="{% url 'ListarUsuarios' %}">Voltar à lista</a>
+        <a href="{% url 'MinhaConta' %}">Voltar para Minha conta</a>
     </p>
 
     <p>
