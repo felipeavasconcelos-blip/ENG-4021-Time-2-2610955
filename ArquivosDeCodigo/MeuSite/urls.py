@@ -18,10 +18,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from MeuSite import views
-from MeuSite import cuidados_actions 
+from MeuSite import cuidados_actions
+from MeuSite import cuidados_detalhes
 
 urlpatterns = [
     path('Cuidados/<int:cuidado_id>/atualizar/', cuidados_actions.atualizar_cuidado, name='AtualizarCuidado'),
+    path('Cuidados/<int:cuidado_id>/detalhes/', cuidados_detalhes.salvar_detalhes, name='DetalhesCuidado'),
     path("admin/", admin.site.urls),
 
     path('', views.home, name='home'),
