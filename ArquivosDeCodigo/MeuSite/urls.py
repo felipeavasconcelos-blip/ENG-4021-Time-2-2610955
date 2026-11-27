@@ -21,6 +21,7 @@ from MeuSite import views
 from MeuSite import cuidados_actions
 from MeuSite import cuidados_detalhes
 from MeuSite import exportar_calendario
+from MeuSite import avaliacao
 
 urlpatterns = [
     path('Cuidados/<int:cuidado_id>/atualizar/', cuidados_actions.atualizar_cuidado, name='AtualizarCuidado'),
@@ -79,5 +80,6 @@ urlpatterns = [
 
 
     path('Sair/', views.Sair, name='Sair'),
+    path('Avaliacao/', avaliacao.avaliar_medmap, name='AvaliacaoMedMap'),
 
 ]
