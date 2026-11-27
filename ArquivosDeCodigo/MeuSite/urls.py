@@ -20,6 +20,7 @@ from django.urls import path
 from MeuSite import views
 from MeuSite import cuidados_actions
 from MeuSite import cuidados_detalhes
+from MeuSite import exportar_calendario
 
 urlpatterns = [
     path('Cuidados/<int:cuidado_id>/atualizar/', cuidados_actions.atualizar_cuidado, name='AtualizarCuidado'),
@@ -63,6 +64,7 @@ urlpatterns = [
     path('ListarUsuarios/',views.ListarUsuarios, name='ListarUsuarios' ),
 
     path('CalendarioCuidados/', views.CalendarioCuidados, name='CalendarioCuidados'),
+    path('CalendarioCuidados/exportar/', exportar_calendario.exportar_cuidados, name='ExportarCalendario'),
 
     path('RelatorioPreventivo/', views.RelatorioPreventivo, name='RelatorioPreventivo'),
    
