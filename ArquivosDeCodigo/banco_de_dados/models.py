@@ -51,6 +51,8 @@ class Cuidado(models.Model):
     nome = models.CharField(max_length=150)
     data = models.DateField()
     concluido = models.BooleanField(default=False)
+    local = models.CharField(max_length=120, blank=True, default='')
+    observacoes = models.TextField(blank=True, default='')
 
     def __str__(self):
         return f"{self.nome} - {self.data}"

@@ -52,6 +52,14 @@
                   required
                >
 
+               <label for="local">Local (opcional)</label>
+               <input id="local" name="local" type="text" maxlength="120"
+                      placeholder="Ex.: Clínica do bairro">
+
+               <label for="observacoes">Observações (opcional)</label>
+               <textarea id="observacoes" name="observacoes" maxlength="400" rows="3"
+                         placeholder="Ex.: Levar exames anteriores"></textarea>
+
                {% if erro %}
                   <p class="erro">{{ erro }}</p>
                {% endif %}

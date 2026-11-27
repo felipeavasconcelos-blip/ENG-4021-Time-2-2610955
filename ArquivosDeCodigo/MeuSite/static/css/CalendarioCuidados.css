@@ -208,3 +208,38 @@ footer {
     background: #0b5048;
     transform: translateY(-3px);
 }
+/* Sprint 10: informações adicionais de cada cuidado */
+.detalhe-info {
+    font-size: 14px;
+    color: #3d665c;
+    overflow-wrap: anywhere;
+}
+.detalhes-cuidado { margin-top: 10px; font-size: 13px; }
+.detalhes-cuidado summary {
+    color: #0f675b;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.detalhes-cuidado form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 10px;
+    max-width: 250px;
+}
+.detalhes-cuidado input, .detalhes-cuidado textarea {
+    box-sizing: border-box;
+    font: inherit;
+    padding: 7px;
+    width: 100%;
+    border: 1px solid #bfd1c9;
+    border-radius: 4px;
+}
+.detalhes-cuidado button {
+    background: #0f675b;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    padding: 9px;
+    cursor: pointer;
+}

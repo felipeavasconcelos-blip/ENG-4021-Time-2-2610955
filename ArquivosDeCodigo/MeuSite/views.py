@@ -466,6 +466,8 @@ def CadastroCuidados(request):
     if request.method == 'POST':
         tipo = request.POST.get('tipo', '').strip()
         nome = request.POST.get('nome', '').strip()
+        local = request.POST.get('local', '').strip()
+        observacoes = request.POST.get('observacoes', '').strip()
         data_cuidado = parse_date(
             request.POST.get('data', '')
         )
@@ -481,12 +483,17 @@ def CadastroCuidados(request):
         elif not data_cuidado:
             erro = 'Informe uma data válida.'
 
+        elif len(local) > 120 or len(observacoes) > 400:
+            erro = 'Local ou observações ultrapassam o limite permitido.'
+
         else:
             Cuidado.objects.create(
                 perfil=perfil,
                 tipo=tipo,
                 nome=nome,
-                data=data_cuidado
+                data=data_cuidado,
+                local=local,
+                observacoes=observacoes
             )
 
             return redirect('CalendarioCuidados')

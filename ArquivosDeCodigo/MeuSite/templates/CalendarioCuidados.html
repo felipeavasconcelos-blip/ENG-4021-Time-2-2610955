@@ -69,6 +69,25 @@
             <div class="dados-cuidado">
                 <h3>{% if cuidado.concluido %}✓ {% endif %}{{ cuidado.nome }}</h3>
                 <p>{{ cuidado.tipo }} - {{ cuidado.data|date:"d/m/Y" }}</p>
+                {% if cuidado.local %}
+                <p class="detalhe-info"><strong>Local:</strong> {{ cuidado.local }}</p>
+                {% endif %}
+                {% if cuidado.observacoes %}
+                <p class="detalhe-info"><strong>Observações:</strong> {{ cuidado.observacoes }}</p>
+                {% endif %}
+                <details class="detalhes-cuidado">
+                    <summary>Editar local e observações</summary>
+                    <form method="post" action="{% url 'DetalhesCuidado' cuidado.id %}">
+                        {% csrf_token %}
+                        <label for="local-{{ cuidado.id }}">Local</label>
+                        <input id="local-{{ cuidado.id }}" name="local" type="text"
+                               maxlength="120" value="{{ cuidado.local }}" placeholder="Local da consulta">
+                        <label for="observacoes-{{ cuidado.id }}">Observações</label>
+                        <textarea id="observacoes-{{ cuidado.id }}" name="observacoes"
+                                  maxlength="400" rows="2">{{ cuidado.observacoes }}</textarea>
+                        <button type="submit">Salvar detalhes</button>
+                    </form>
+                </details>
             </div>
             <div class="acoes-cuidado">
                 {% if cuidado.concluido %}
