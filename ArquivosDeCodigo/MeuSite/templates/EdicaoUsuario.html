@@ -5,48 +5,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edição de Usuário - MedMap</title>
-    <link rel="stylesheet" href="{% static 'css/EdicaoUsuario.css' %}">
+    <link rel="stylesheet" href="/static/css/EdicaoUsuario.css">
 </head>
+
 <body>
-    <nav>
-        <h2>MedMap</h2>
-        <div class="navegacao">
-            <a href="{% url 'InicioLogado' %}">Início</a>
-            <a href="{% url 'MinhaConta' %}">Minha conta</a>
-            <a href="{% url 'Sair' %}">Sair</a>
-        </div>
-    </nav>
 
-    <main>
-        <h1>Edite os dados da sua conta</h1>
-        <p>Atualize seu nome, e-mail ou senha.</p>
+<nav>
+    <h2>MedMap</h2>
 
-        <div id="caixa">
-            <form method="POST">
-                {% csrf_token %}
-                {% if erro %}
-                    <p class="erro">{{ erro }}</p>
-                {% endif %}
+    <ul class="navegacao">
+        <a href="{% url 'InicioLogado' %}">Início</a>
+        <a href="{% url 'MinhaConta' %}">Minha conta</a>
+        <a href="{% url 'Sair' %}">Sair</a>
+    </ul>
+</nav>
 
-                <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome" value="{{ usuario.nome }}" required>
+<main>
 
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" value="{{ usuario.email }}" required>
+<h1>Edite o seu Perfil</h1>
+<p>Atualize suas informações e sua foto de perfil.</p>
 
-                <label for="senha">Nova senha</label>
-                <input
-                    type="password"
-                    id="senha"
-                    name="senha"
-                    placeholder="Deixe em branco para manter a atual"
-                    minlength="6"
-                >
+<div id="caixa">
 
-                <button type="submit">Salvar alterações</button>
-                <p><a href="{% url 'MinhaConta' %}">Voltar para Minha conta</a></p>
-            </form>
-        </div>
-    </main>
+<form method="POST">
+    {% csrf_token %}
+
+    {% if erro %}
+        <p class="erro">{{ erro }}</p>
+    {% endif %}
+
+    <label for="nome">Nome completo</label>
+    <input
+        type="text"
+        id="nome"
+        name="nome"
+        value="{{ usuario.nome }}"
+        required
+    >
+
+    <label for="email">E-mail</label>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        value="{{ usuario.email }}"
+        required
+    >
+
+    <label for="senha">Nova senha</label>
+    <input
+        type="password"
+        id="senha"
+        name="senha"
+        placeholder="Deixe em branco para manter a atual"
+        minlength="6"
+    >
+
+    <button type="submit">Salvar alterações</button>
+
+    <p>
+        <a href="{% url 'MinhaConta' %}">Voltar para Minha conta</a>
+    </p>
+
+    <p>
+        <a href="{% url 'RemocaoUsuario' usuario.id %}">
+            Excluir minha conta
+        </a>
+    </p>
+</form>
+
+</div>
+
+</main>
+
+<script>
+const foto=document.getElementById("foto");
+const previa=document.getElementById("previa");
+const iniciais=document.getElementById("iniciais");
+
+foto.addEventListener("change",function(){
+    const arquivo=foto.files[0];
+    if(!arquivo)return;
+    previa.src=URL.createObjectURL(arquivo);
+    previa.hidden=false;
+    iniciais.hidden=true;
+});
+</script>
+
 </body>
 </html>
