@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.hashers import check_password, make_password
-from datetime import date
+from datetime import date, timedelta
 from django.utils.dateparse import parse_date
 from banco_de_dados.models import Usuario, Perfil, HistoricoFamiliar as HistoricoFamiliarModel, Cuidado
 
@@ -374,6 +374,26 @@ def CheckupInteligente(request):
     if not perfil:
         return redirect('PerfilSaude')
 
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        tipo = request.POST.get('tipo')
+
+        ja_existe = Cuidado.objects.filter(
+            perfil=perfil,
+            nome=nome,
+            concluido=False
+        ).exists()
+
+        if not ja_existe:
+            Cuidado.objects.create(
+                perfil=perfil,
+                tipo=tipo,
+                nome=nome,
+                data=date.today() + timedelta(days=30)
+            )
+
+        return redirect('InicioLogado')
+
     idade = date.today().year - perfil.data_nascimento.year
     sexo = perfil.sexo
 
@@ -394,30 +414,66 @@ def CheckupInteligente(request):
 
     # pressao
     if 'Hipertensão' in doencas or 'Infarto ou AVC' in doencas:
-        recomendacoes.append('Medir a pressão pelo menos uma vez por ano, com atenção, porque há hipertensão, infarto ou AVC na família.')
+        recomendacoes.append({
+            'texto': 'Medir a pressão pelo menos uma vez por ano, com atenção, porque há hipertensão, infarto ou AVC na família.',
+            'nome': 'Medir a pressão',
+            'tipo': 'Exame'
+        })
     elif idade >= 18:
-        recomendacoes.append('Medir a pressão pelo menos uma vez por ano.')
+        recomendacoes.append({
+            'texto': 'Medir a pressão pelo menos uma vez por ano.',
+            'nome': 'Medir a pressão',
+            'tipo': 'Exame'
+        })
 
     # diabetes
     if 'Diabetes tipo 2' in doencas:
-        recomendacoes.append('Fazer exame de glicemia de jejum agora e repetir a cada 3 anos, porque há diabetes na família.')
+        recomendacoes.append({
+            'texto': 'Fazer exame de glicemia de jejum agora e repetir a cada 3 anos, porque há diabetes na família.',
+            'nome': 'Glicemia de jejum',
+            'tipo': 'Exame'
+        })
     elif idade >= 35:
-        recomendacoes.append('Fazer exame de glicemia de jejum a cada 3 anos.')
+        recomendacoes.append({
+            'texto': 'Fazer exame de glicemia de jejum a cada 3 anos.',
+            'nome': 'Glicemia de jejum',
+            'tipo': 'Exame'
+        })
 
     # colesterol
     if 'Colesterol alto' in doencas or 'Infarto ou AVC' in doencas:
-        recomendacoes.append('Fazer exame de colesterol agora, porque há colesterol alto, infarto ou AVC na família.')
+        recomendacoes.append({
+            'texto': 'Fazer exame de colesterol agora, porque há colesterol alto, infarto ou AVC na família.',
+            'nome': 'Exame de colesterol',
+            'tipo': 'Exame'
+        })
     elif idade >= 20:
-        recomendacoes.append('Fazer exame de colesterol a cada 5 anos.')
+        recomendacoes.append({
+            'texto': 'Fazer exame de colesterol a cada 5 anos.',
+            'nome': 'Exame de colesterol',
+            'tipo': 'Exame'
+        })
 
     # mama
     if sexo == 'Feminino':
         if 'Câncer de mama' in doencas and idade >= 35:
-            recomendacoes.append('Fazer mamografia uma vez por ano, porque há câncer de mama na família.')
+            recomendacoes.append({
+                'texto': 'Fazer mamografia uma vez por ano, porque há câncer de mama na família.',
+                'nome': 'Mamografia',
+                'tipo': 'Exame'
+            })
         elif idade >= 50 and idade <= 74:
-            recomendacoes.append('Fazer mamografia a cada 2 anos.')
+            recomendacoes.append({
+                'texto': 'Fazer mamografia a cada 2 anos.',
+                'nome': 'Mamografia',
+                'tipo': 'Exame'
+            })
         elif idade >= 40 and idade < 50:
-            recomendacoes.append('Conversar com o médico sobre fazer mamografia.')
+            recomendacoes.append({
+                'texto': 'Conversar com o médico sobre fazer mamografia.',
+                'nome': 'Consulta sobre mamografia',
+                'tipo': 'Consulta'
+            })
 
     # intestino
     if 'Câncer de intestino' in doencas:
@@ -427,47 +483,95 @@ def CheckupInteligente(request):
                 if historico.idade_diagnostico - 10 < idade_inicio:
                     idade_inicio = historico.idade_diagnostico - 10
         if idade >= idade_inicio:
-            recomendacoes.append('Fazer colonoscopia a cada 5 anos, porque há câncer de intestino na família.')
+            recomendacoes.append({
+                'texto': 'Fazer colonoscopia a cada 5 anos, porque há câncer de intestino na família.',
+                'nome': 'Colonoscopia',
+                'tipo': 'Exame'
+            })
         else:
-            recomendacoes.append('Começar a fazer colonoscopia aos ' + str(idade_inicio) + ' anos.')
+            recomendacoes.append({
+                'texto': 'Começar a fazer colonoscopia aos ' + str(idade_inicio) + ' anos.',
+                'nome': '',
+                'tipo': ''
+            })
     elif idade >= 45 and idade <= 75:
-        recomendacoes.append('Conversar com o médico sobre exame para câncer de intestino.')
+        recomendacoes.append({
+            'texto': 'Conversar com o médico sobre exame para câncer de intestino.',
+            'nome': 'Consulta sobre câncer de intestino',
+            'tipo': 'Consulta'
+        })
 
     # prostata
     if sexo == 'Masculino':
         if 'Câncer de próstata' in doencas and idade >= 45:
-            recomendacoes.append('Conversar com o urologista sobre o exame de PSA, porque há câncer de próstata na família.')
+            recomendacoes.append({
+                'texto': 'Conversar com o urologista sobre o exame de PSA, porque há câncer de próstata na família.',
+                'nome': 'Consulta com urologista (PSA)',
+                'tipo': 'Consulta'
+            })
         elif idade >= 50:
-            recomendacoes.append('Conversar com o urologista sobre o exame de PSA.')
+            recomendacoes.append({
+                'texto': 'Conversar com o urologista sobre o exame de PSA.',
+                'nome': 'Consulta com urologista (PSA)',
+                'tipo': 'Consulta'
+            })
 
     # osteoporose
     if sexo == 'Feminino':
         if 'Osteoporose' in doencas and idade >= 50:
-            recomendacoes.append('Fazer densitometria óssea, porque há osteoporose na família.')
+            recomendacoes.append({
+                'texto': 'Fazer densitometria óssea, porque há osteoporose na família.',
+                'nome': 'Densitometria óssea',
+                'tipo': 'Exame'
+            })
         elif idade >= 65:
-            recomendacoes.append('Fazer densitometria óssea.')
+            recomendacoes.append({
+                'texto': 'Fazer densitometria óssea.',
+                'nome': 'Densitometria óssea',
+                'tipo': 'Exame'
+            })
 
     # habitos
     if fuma:
-        recomendacoes.append('Procurar ajuda para parar de fumar. O SUS oferece tratamento gratuito.')
+        recomendacoes.append({
+            'texto': 'Procurar ajuda para parar de fumar. O SUS oferece tratamento gratuito.',
+            'nome': '',
+            'tipo': ''
+        })
         if idade >= 50 and idade <= 80:
-            recomendacoes.append('Conversar com o médico sobre tomografia do pulmão.')
+            recomendacoes.append({
+                'texto': 'Conversar com o médico sobre tomografia do pulmão.',
+                'nome': 'Consulta sobre tomografia do pulmão',
+                'tipo': 'Consulta'
+            })
 
     if bebe:
-        recomendacoes.append('Diminuir o consumo de álcool.')
+        recomendacoes.append({
+            'texto': 'Diminuir o consumo de álcool.',
+            'nome': '',
+            'tipo': ''
+        })
 
     if sedentario:
-        recomendacoes.append('Fazer pelo menos 150 minutos de atividade física por semana.')
+        recomendacoes.append({
+            'texto': 'Fazer pelo menos 150 minutos de atividade física por semana.',
+            'nome': '',
+            'tipo': ''
+        })
+
+    nomes_no_calendario = []
+    for cuidado in Cuidado.objects.filter(perfil=perfil, concluido=False):
+        nomes_no_calendario.append(cuidado.nome)
 
     return render(request, 'CheckupInteligente.html', {
         'perfil': perfil,
         'idade': idade,
         'recomendacoes': recomendacoes,
+        'nomes_no_calendario': nomes_no_calendario,
         'fuma': fuma,
         'bebe': bebe,
         'sedentario': sedentario
     })
-
 
 def ListarUsuarios(request):
     usuario_id = request.session.get('usuario_id')
