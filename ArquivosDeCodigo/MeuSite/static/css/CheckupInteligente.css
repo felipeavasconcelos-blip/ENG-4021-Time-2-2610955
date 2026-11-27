@@ -90,3 +90,28 @@ footer{
     text-align:center;
     padding:20px;
 }
+
+.cartao form{
+    margin:12px 0 8px;
+}
+
+.cartao button{
+    background:#0f675b;
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:10px 20px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.cartao button:hover{
+    background:#0b554b;
+}
+
+.no-calendario{
+    color:#0f675b;
+    font-size:13px;
+    font-weight:bold;
+    margin:10px 0;
+}
