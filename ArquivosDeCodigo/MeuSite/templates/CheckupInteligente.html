@@ -20,13 +20,14 @@
         <h1>Check-up Inteligente</h1>
         <p>Recomendações para {{ perfil.nome }}, {{ idade }} anos, de acordo com o seu perfil, o seu histórico familiar e os seus hábitos.</p>
 
-        <form method="GET" class="habitos">
+        <div class="habitos">
             <h2>Seus hábitos</h2>
-            <label><input type="checkbox" name="fuma" value="sim" {% if fuma %}checked{% endif %}> Fumo</label>
-            <label><input type="checkbox" name="bebe" value="sim" {% if bebe %}checked{% endif %}> Bebo álcool com frequência</label>
-            <label><input type="checkbox" name="sedentario" value="sim" {% if sedentario %}checked{% endif %}> Não pratico atividade física</label>
-            <button type="submit">Atualizar</button>
-        </form>
+            {% if fuma %}<p>Fuma</p>{% endif %}
+            {% if bebe %}<p>Bebe álcool com frequência</p>{% endif %}
+            {% if sedentario %}<p>Não pratica atividade física</p>{% endif %}
+            {% if not fuma and not bebe and not sedentario %}<p>Nenhum hábito de risco informado.</p>{% endif %}
+            <p>Para alterar seus hábitos, edite o seu <a href="{% url 'PerfilSaude' %}">Perfil de saúde</a>.</p>
+        </div>
 
         <section class="cuidados">
             <h2>Recomendações</h2>

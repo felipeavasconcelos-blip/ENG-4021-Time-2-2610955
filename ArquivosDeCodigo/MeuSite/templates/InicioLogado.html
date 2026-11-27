@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedMap | Início</title>
     <link rel="stylesheet" href="{% static 'css/InicioLogado.css' %}">
-    <link rel="stylesheet" href="{% static 'css/ProximosCuidadosInicio.css' %}">
 </head>
 
 <body>
@@ -73,129 +72,87 @@
 
         <section class="boas-vindas">
             <p class="subtitulo">SEU ESPAÇO DE SAÚDE</p>
-            <h2>Bem-vindo ao <span>MedMap</span></h2>
+            <h2>Olá, <span>{{ usuario.nome }}</span></h2>
             <p class="descricao">
-                Tudo o que você precisa para cuidar da sua saúde
-                e acompanhar o bem-estar da sua família.
+                Siga os 3 passos abaixo para descobrir quais cuidados você precisa
+                e acompanhe tudo no seu calendário.
             </p>
         </section>
 
-        <section class="areas-container">
+        <section class="fluxo">
 
             <a href="{% url 'PerfilSaude' %}" class="area-card saude">
-                <div class="card-topo">
-                    <span class="numero">01</span>
-                    <span class="icone">♡</span>
-                </div>
-
+                <span class="numero">01</span>
                 <div class="card-conteudo">
-                    <h3>Minha Saúde</h3>
-                    <p>
-                        Acompanhe suas informações de saúde,
-                        checkups e relatórios preventivos.
-                    </p>
+                    <h3>Perfil de saúde</h3>
+                    <p>Preencha sua idade, sexo e hábitos.</p>
                 </div>
-
-                <span class="seta">↗</span>
             </a>
 
-            <a href="{% url 'CalendarioCuidados' %}" class="area-card cuidados">
-                <div class="card-topo">
-                    <span class="numero">02</span>
-                    <span class="icone">▦</span>
-                </div>
+            <span class="seta-fluxo">→</span>
 
+            <a href="{% url 'HistoricoFamiliar' %}" class="area-card cuidados">
+                <span class="numero">02</span>
                 <div class="card-conteudo">
-                    <h3>Cuidados</h3>
-                    <p>
-                        Organize consultas, exames, vacinas
-                        e seus próximos cuidados.
-                    </p>
+                    <h3>Histórico familiar</h3>
+                    <p>Registre as doenças dos seus familiares.</p>
                 </div>
-
-                <span class="seta">↗</span>
             </a>
 
-            <a href="{% url 'Familiares' %}" class="area-card familia">
-                <div class="card-topo">
-                    <span class="numero">03</span>
-                    <span class="icone">♧</span>
-                </div>
+            <span class="seta-fluxo">→</span>
 
+            <a href="{% url 'CheckupInteligente' %}" class="area-card familia">
+                <span class="numero">03</span>
                 <div class="card-conteudo">
-                    <h3>Família</h3>
-                    <p>
-                        Organize os dados de saúde dos seus
-                        familiares e seu histórico familiar.
-                    </p>
+                    <h3>Check-up Inteligente</h3>
+                    <p>Veja os exames e cuidados recomendados para você.</p>
                 </div>
-
-                <span class="seta">↗</span>
             </a>
 
-            <a href="{% url 'EdicaoUsuario' usuario.id %}" class="area-card perfil">
-                <div class="card-topo">
-                    <span class="numero">04</span>
-                    <span class="icone">◉</span>
-                </div>
+        </section>
 
-                <div class="card-conteudo">
-                    <h3>Meu Perfil</h3>
-                    <p>
-                        Gerencie seus dados pessoais,
-                        preferências e privacidade.
-                    </p>
-                </div>
+        <section class="calendario-inicio">
 
-                <span class="seta">↗</span>
-            </a>
-
-            <!-- Sprint 9: quinto card, sem alterar os quatro existentes. -->
-            <div class="area-card calendario-home">
-                <div class="card-topo">
-                    <span class="numero">05</span>
-                    <span class="icone">▦</span>
-                </div>
-                <div class="card-conteudo">
-                    <h3>Calendário</h3>
-                    <p>Veja seus cuidados organizados por dia.</p>
-                </div>
-
+            <div class="calendario-grande">
+                <h2>Meu calendário</h2>
                 {% load calendario_inicio %}
                 {% calendario_inicio %}
-
-                <a class="abrir-calendario" href="{% url 'CalendarioCuidados' %}">Abrir calendário completo →</a>
             </div>
 
+            <div class="proximos-inicio">
+                <h2>Próximos cuidados</h2>
 
+                {% for cuidado in proximos_cuidados %}
+                <article class="proximo-item">
+                    <div>
+                        <strong>{{ cuidado.nome }}</strong>
+                        <span>{{ cuidado.tipo }} - {{ cuidado.data|date:"d/m/Y" }}</span>
+                    </div>
+
+                    <form method="POST" action="{% url 'AtualizarCuidado' cuidado.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="acao" value="concluir">
+                        <input type="hidden" name="voltar" value="InicioLogado">
+                        <select name="meses">
+                            <option value="0">Não reagendar</option>
+                            <option value="1">Reagendar em 1 mês</option>
+                            <option value="3">Reagendar em 3 meses</option>
+                            <option value="6">Reagendar em 6 meses</option>
+                            <option value="12">Reagendar em 12 meses</option>
+                        </select>
+                        <button type="submit">Concluir</button>
+                    </form>
+                </article>
+                {% empty %}
+                <p class="proximos-vazio">Nenhum cuidado agendado no momento.</p>
+                {% endfor %}
+
+                <a href="{% url 'CadastroCuidados' %}" class="novo-cuidado">+ Novo cuidado</a>
+            </div>
 
         </section>
 
     </main>
-
-    <section class="proximos-inicio">
-        <div class="proximos-cabecalho">
-            <div>
-                <h2>Próximos cuidados</h2>
-                <p>Confira suas próximas consultas, vacinas e exames.</p>
-            </div>
-            <a href="{% url 'CalendarioCuidados' %}">Ver calendário completo</a>
-        </div>
-
-        <div class="proximos-lista">
-            {% for cuidado in proximos_cuidados %}
-            <article class="proximo-item">
-                <div>
-                    <strong>{{ cuidado.nome }}</strong>
-                    <span>{{ cuidado.tipo }}</span>
-                </div>
-                <time datetime="{{ cuidado.data|date:'Y-m-d' }}">{{ cuidado.data|date:"d/m/Y" }}</time>
-            </article>
-            {% empty %}
-            <p class="proximos-vazio">Nenhum cuidado futuro agendado no momento.</p>
-            {% endfor %}
-        </div>
-    </section>
 
     <footer>
         MedMap — Seu cuidado, do seu jeito.

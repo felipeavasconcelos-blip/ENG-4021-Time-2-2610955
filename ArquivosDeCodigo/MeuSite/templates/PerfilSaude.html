@@ -68,6 +68,13 @@
                     </div>
                 </div>
 
+                <div class="habitos">
+                    <p>Hábitos</p>
+                    <label><input type="checkbox" name="fuma" value="sim" {% if perfil.fuma %}checked{% endif %}> Fumo</label>
+                    <label><input type="checkbox" name="bebe" value="sim" {% if perfil.bebe %}checked{% endif %}> Bebo álcool com frequência</label>
+                    <label><input type="checkbox" name="sedentario" value="sim" {% if perfil.sedentario %}checked{% endif %}> Não pratico atividade física</label>
+                </div>
+
                 <button type="submit">Salvar perfil</button>
             </form>
         </section>
