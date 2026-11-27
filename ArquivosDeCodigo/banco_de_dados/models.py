@@ -56,3 +56,13 @@ class Cuidado(models.Model):
 
     def __str__(self):
         return f"{self.nome} - {self.data}"
+
+
+class AvaliacaoMedMap(models.Model):
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    nota = models.PositiveSmallIntegerField()
+    comentario = models.TextField(blank=True, default='')
+    atualizado_em = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Avaliação de {self.usuario.nome}: {self.nota}/5"

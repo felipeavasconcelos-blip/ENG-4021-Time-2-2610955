@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+body { font-family: Arial, sans-serif; margin: 0; background: #f7fbf8; color: #173d37; }
+nav { background: #0f675b; color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
+nav h2 { margin: 0; }
+nav a { color: white; }
+main { max-width: 680px; margin: 35px auto; padding: 0 20px; }
+h1 { color: #0f675b; }
+.formulario { background: white; border: 1px solid #dbe7e2; border-radius: 10px; padding: 25px; margin-top: 20px; }
+fieldset { border: 0; padding: 0; margin: 0 0 22px; }
+legend, label { font-weight: bold; }
+.notas { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+.notas label { cursor: pointer; }
+.notas input { position: absolute; opacity: 0; }
+.notas span { display: inline-block; border: 1px solid #b6d4c7; border-radius: 6px; padding: 12px 17px; }
+.notas input:checked + span { color: white; background: #0f675b; }
+.notas input:focus-visible + span { outline: 3px solid #a7d9cd; }
+textarea { margin: 12px 0; width: 100%; padding: 12px; font: inherit; border: 1px solid #b6d4c7; border-radius: 6px; resize: vertical; }
+.orientacao { font-size: 13px; color: #55736c; }
+button { padding: 12px 18px; border: 0; background: #0f675b; border-radius: 6px; color: white; font: inherit; cursor: pointer; }
+.sucesso { color: #166645; background: #e5f6ee; padding: 12px; border-radius: 5px; }
+.erro { color: #9e402f; }
+footer { padding: 20px; text-align: center; }
+@media(max-width: 500px) { nav { flex-direction: column; gap: 10px; } .formulario { padding: 15px; } }
