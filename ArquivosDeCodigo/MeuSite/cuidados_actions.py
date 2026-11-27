@@ -46,4 +46,4 @@ def atualizar_cuidado(request, cuidado_id):
                 data=somar_meses(date.today(), int(meses))
             )
 
-    return redirect('CalendarioCuidados')
+    return redirect(request.POST.get('voltar', 'CalendarioCuidados'))

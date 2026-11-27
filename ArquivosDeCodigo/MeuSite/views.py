@@ -28,6 +28,9 @@ def PerfilSaude(request):
             request.POST.get('data_nascimento', '')
         )
         sexo = request.POST.get('sexo', '').strip()
+        fuma = request.POST.get('fuma') == 'sim'
+        bebe = request.POST.get('bebe') == 'sim'
+        sedentario = request.POST.get('sedentario') == 'sim'
 
         if not nome or not data_nascimento or not sexo:
             erro = 'Preencha todos os campos do perfil.'
@@ -36,13 +39,19 @@ def PerfilSaude(request):
                 perfil.nome = nome
                 perfil.data_nascimento = data_nascimento
                 perfil.sexo = sexo
+                perfil.fuma = fuma
+                perfil.bebe = bebe
+                perfil.sedentario = sedentario
                 perfil.save()
             else:
                 perfil = Perfil.objects.create(
                     usuario=usuario,
                     nome=nome,
                     data_nascimento=data_nascimento,
-                    sexo=sexo
+                    sexo=sexo,
+                    fuma=fuma,
+                    bebe=bebe,
+                    sedentario=sedentario
                 )
 
             mensagem = 'Perfil salvo com sucesso.'
@@ -333,9 +342,9 @@ def CheckupInteligente(request):
     idade = date.today().year - perfil.data_nascimento.year
     sexo = perfil.sexo
 
-    fuma = request.GET.get('fuma')
-    bebe = request.GET.get('bebe')
-    sedentario = request.GET.get('sedentario')
+    fuma = perfil.fuma
+    bebe = perfil.bebe
+    sedentario = perfil.sedentario
 
     # doencas de parentes de primeiro grau
     historicos = HistoricoFamiliarModel.objects.filter(perfil=perfil)
@@ -694,9 +703,17 @@ def InicioLogado(request):
         id__in=contas_ids
     )
 
+    perfil = Perfil.objects.filter(usuario_id=usuario_id).first()
+    proximos_cuidados = Cuidado.objects.filter(
+        perfil=perfil,
+        concluido=False,
+        data__gte=date.today()
+    ).order_by('data')[:3]
+
     return render(request, 'InicioLogado.html', {
         'usuario': usuario,
-        'contas_utilizadas': contas_utilizadas
+        'contas_utilizadas': contas_utilizadas,
+        'proximos_cuidados': proximos_cuidados
     })
 
 def TrocarConta(request):
